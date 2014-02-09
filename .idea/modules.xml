@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GuessWhom.iml" filepath="$PROJECT_DIR$/GuessWhom.iml" />
+      <module fileurl="file://$USER_HOME$/android/github libraries/android-simple-facebook/Simple Facebook/Simple Facebook.iml" filepath="$USER_HOME$/android/github libraries/android-simple-facebook/Simple Facebook/Simple Facebook.iml" />
+      <module fileurl="file://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/facebook.iml" filepath="$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/facebook.iml" />
+    </modules>
+  </component>
+</project>
+

@@ -1,18 +1,11 @@
 package com.mattkula.guesswhom.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.inputmethod.InputMethod;
-//import com.facebook.Session;
-//import com.facebook.SessionState;
-//import com.facebook.UiLifecycleHelper;
-//import com.facebook.widget.UserSettingsFragment;
+import android.view.MenuItem;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.ui.fragments.AuthorizedMainFragment;
 import com.mattkula.guesswhom.ui.fragments.UnauthorizedMainFragment;
@@ -32,23 +25,12 @@ public class MainActivity extends FragmentActivity {
 
     private boolean isResumed = false;
 
-//    private UiLifecycleHelper uiHelper;
-//    private Session.StatusCallback callback = new Session.StatusCallback(){
-//        @Override
-//        public void call(Session session, SessionState state, Exception exception) {
-//            onSessionStateChanged(session, state, exception);
-//        }
-//    };
-
     SimpleFacebook mSimpleFacebook;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        uiHelper = new UiLifecycleHelper(this, callback);
-//        uiHelper.onCreate(savedInstanceState);
 
         Permissions[] permissions = new Permissions[]{
                 Permissions.BASIC_INFO,
@@ -77,30 +59,19 @@ public class MainActivity extends FragmentActivity {
         transaction.commit();
     }
 
-//    private void onSessionStateChanged(Session session, SessionState state, Exception e){
-//        if(isResumed){
-//            FragmentManager manager = getSupportFragmentManager();
-//            int count = manager.getBackStackEntryCount();
-//
-//            for(int i=0; i < count; i++)
-//                manager.popBackStack();
-//
-//            if(state.isOpened())
-//                showFragment(AUTHORIZED, true);
-//            else
-//                showFragment(UNAUTHORIZED, false);
-//        }
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.menu_item_fb_logout:
+                mSimpleFacebook.logout(logoutListener);
+                return false;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
-//        Session session = Session.getActiveSession();
-//
-//        if(session != null && session.isOpened())
-//            showFragment(AUTHORIZED, false);
-//        else
-//            showFragment(UNAUTHORIZED, false);
 
         if(mSimpleFacebook.isLogin())
             showFragment(AUTHORIZED, false);
@@ -112,7 +83,6 @@ public class MainActivity extends FragmentActivity {
     protected void onResume() {
         super.onResume();
         isResumed = true;
-//        uiHelper.onResume();
         mSimpleFacebook = SimpleFacebook.getInstance(this);
     }
 
@@ -120,19 +90,6 @@ public class MainActivity extends FragmentActivity {
     protected void onPause() {
         super.onPause();
         isResumed = false;
-//        uiHelper.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        uiHelper.onDestroy();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-//        uiHelper.onSaveInstanceState(outState);
     }
 
     @Override
@@ -189,19 +146,13 @@ public class MainActivity extends FragmentActivity {
         }
 
         @Override
-        public void onThinking() {
-
-        }
+        public void onThinking() {}
 
         @Override
-        public void onException(Throwable throwable) {
-
-        }
+        public void onException(Throwable throwable) {}
 
         @Override
-        public void onFail(String reason) {
-
-        }
+        public void onFail(String reason) {}
     };
 
 }

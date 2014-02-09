@@ -3,12 +3,7 @@ package com.mattkula.guesswhom.ui.fragments;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.*;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
-import com.facebook.model.GraphUser;
 import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.ui.GameActivity;
@@ -45,7 +40,15 @@ public class AuthorizedMainFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
-        inflater.inflate(R.menu.fragment_authorized, menu);
+        inflater.inflate(R.menu.menu_fragment_authorized, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch(item.getItemId()){
+//            case R.id.btn_fb_login
+//        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

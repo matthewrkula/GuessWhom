@@ -83,10 +83,9 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="177" column="0" selection-start="5644" selection-end="5644" vertical-scroll-proportion="0.954323" vertical-offset="1800" max-vertical-offset="2865">
+            <state line="43" column="0" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.954323" vertical-offset="60" max-vertical-offset="2460">
               <folding>
-                <element signature="method#onFail#0;class#5274:5723" expanded="false" />
-                <element signature="method#onFail#0;class#5783:6156" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,22 +100,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_main_unauthorized.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/fragment_main_unauthorized.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="GameActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="36" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="330">
+            <state line="12" column="49" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java">
+      <file leaf-file-name="fragment_main_authorized.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/fragment_main_authorized.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="49" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+            <state line="20" column="0" selection-start="748" selection-end="748" vertical-scroll-proportion="-5.882353" vertical-offset="0" max-vertical-offset="405">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UnauthorizedMainFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/UnauthorizedMainFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="0" selection-start="1098" selection-end="1098" vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="615">
               <folding />
             </state>
           </provider>
@@ -134,20 +142,11 @@
       <file leaf-file-name="AuthorizedMainFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="4" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+            <state line="50" column="14" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0" vertical-offset="47" max-vertical-offset="1245">
               <folding>
-                <element signature="e#1079#1306#0" expanded="true" />
-                <element signature="e#1295#1296#0" expanded="true" />
+                <element signature="e#929#1156#0" expanded="true" />
+                <element signature="e#1145#1146#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_authorized.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/menu/fragment_authorized.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="40" selection-start="218" selection-end="218" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="195">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -185,10 +184,10 @@
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/griditem_person.xml" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/GameBoardFragment.java" />
-        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java" />
         <option value="$PROJECT_DIR$/res/values/menu.xml" />
-        <option value="$PROJECT_DIR$/res/menu/fragment_authorized.xml" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java" />
+        <option value="$PROJECT_DIR$/res/menu/fragment_authorized.xml" />
+        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -310,24 +309,6 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Guess Whom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GuessWhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -343,7 +324,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="menu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -654,8 +635,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="0" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="705">
           <folding>
-            <element signature="e#1079#1306#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
+            <element signature="e#929#1156#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -674,8 +655,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="0" selection-start="928" selection-end="928" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="510">
           <folding>
-            <element signature="method#onFail#0;class#5274:5723" expanded="false" />
-            <element signature="method#onFail#0;class#5783:6156" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -728,8 +708,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="375">
           <folding>
-            <element signature="e#1079#1306#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
+            <element signature="e#929#1156#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -765,8 +745,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
           <folding>
-            <element signature="method#onFail#0;class#5274:5723" expanded="false" />
-            <element signature="method#onFail#0;class#5783:6156" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -822,8 +801,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="405">
           <folding>
-            <element signature="method#onFail#0;class#5274:5723" expanded="false" />
-            <element signature="method#onFail#0;class#5783:6156" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -879,8 +857,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="49" selection-start="1605" selection-end="1605" vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="870">
           <folding>
-            <element signature="method#onFail#0;class#5274:5723" expanded="false" />
-            <element signature="method#onFail#0;class#5783:6156" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -975,26 +952,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/UnauthorizedMainFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="1098" selection-end="1098" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="690">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/android/github libraries/android-simple-facebook/Simple Facebook/src/com/sromku/simple/fb/SimpleFacebook.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="279" column="0" selection-start="7646" selection-end="7646" vertical-scroll-proportion="0.0" vertical-offset="3261" max-vertical-offset="32970">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/fragment_main_authorized.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="504" selection-end="504" vertical-scroll-proportion="-4.117647" vertical-offset="0" max-vertical-offset="405">
           <folding />
         </state>
       </provider>
@@ -1040,29 +1000,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/fragment_authorized.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/UnauthorizedMainFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="40" selection-start="218" selection-end="218" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="195">
+        <state line="33" column="0" selection-start="1098" selection-end="1098" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="690">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="4" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+        <state line="50" column="14" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0" vertical-offset="47" max-vertical-offset="1245">
           <folding>
-            <element signature="e#1079#1306#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
+            <element signature="e#929#1156#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/menu/menu_fragment_authorized.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="152" selection-end="152" vertical-scroll-proportion="0.10204082" vertical-offset="0" max-vertical-offset="588">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/fragment_main_authorized.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="748" selection-end="748" vertical-scroll-proportion="-5.882353" vertical-offset="0" max-vertical-offset="405">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="0" selection-start="5644" selection-end="5644" vertical-scroll-proportion="0.954323" vertical-offset="1800" max-vertical-offset="2865">
+        <state line="43" column="0" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.954323" vertical-offset="60" max-vertical-offset="2460">
           <folding>
-            <element signature="method#onFail#0;class#5274:5723" expanded="false" />
-            <element signature="method#onFail#0;class#5783:6156" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

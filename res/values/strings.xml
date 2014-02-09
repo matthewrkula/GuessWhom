@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GuessWhom</string>
+    <string name="app_name">Guess Whom</string>
     <string name="app_id">581240105299455</string>
+    <string name="games_in_progress">Games in Progress:</string>
+    <string name="new_game">New Game</string>
 </resources>

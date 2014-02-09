@@ -32,6 +32,9 @@ public class UnauthorizedMainFragment extends Fragment {
             }
         });
 
+        mLoginButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.com_facebook_inverse_icon, 0, 0, 0);
+        mLoginButton.setCompoundDrawablePadding(12);
+
         return v;
     }
 

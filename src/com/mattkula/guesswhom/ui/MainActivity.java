@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.MenuItem;
 import com.mattkula.guesswhom.R;
+import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.ui.fragments.AuthorizedMainFragment;
 import com.mattkula.guesswhom.ui.fragments.UnauthorizedMainFragment;
 import com.sromku.simple.fb.Permissions;
@@ -20,7 +22,6 @@ public class MainActivity extends FragmentActivity {
 
     private final int UNAUTHORIZED = 0;
     private final int AUTHORIZED = 1;
-    private final int SETTINGS = 2;
     Fragment[] fragments = new Fragment[2];
 
     private boolean isResumed = false;
@@ -32,6 +33,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set up SimpleFacebookConfiguration
         Permissions[] permissions = new Permissions[]{
                 Permissions.BASIC_INFO,
                 Permissions.READ_FRIENDLISTS
@@ -52,10 +54,8 @@ public class MainActivity extends FragmentActivity {
         fragments[AUTHORIZED] = authorizedFragment;
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        for(int i=0; i < fragments.length; i++){
+        for(int i=0; i < fragments.length; i++)
             transaction.hide(fragments[i]);
-        }
         transaction.commit();
     }
 
@@ -119,30 +119,23 @@ public class MainActivity extends FragmentActivity {
         }
 
         @Override
-        public void onNotAcceptingPermissions() {
-
-        }
+        public void onNotAcceptingPermissions() {}
 
         @Override
-        public void onThinking() {
-
-        }
+        public void onThinking() {}
 
         @Override
-        public void onException(Throwable throwable) {
-
-        }
+        public void onException(Throwable throwable) {}
 
         @Override
-        public void onFail(String reason) {
-
-        }
+        public void onFail(String reason) {}
     };
 
     SimpleFacebook.OnLogoutListener logoutListener = new SimpleFacebook.OnLogoutListener() {
         @Override
         public void onLogout() {
             showFragment(UNAUTHORIZED, false);
+            PreferenceManager.logout(MainActivity.this);
         }
 
         @Override

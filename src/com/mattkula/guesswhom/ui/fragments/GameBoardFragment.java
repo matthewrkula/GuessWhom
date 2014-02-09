@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class GameBoardFragment extends Fragment {
     public final int NUM_COLUMNS = 4;
+    public final int NUM_CHOICES = 24;
 //    public final int NUM_COLUMNS = 5;
 
     GridView mGridView;
@@ -58,7 +59,7 @@ public class GameBoardFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 25;
+            return NUM_CHOICES;
         }
 
         @Override

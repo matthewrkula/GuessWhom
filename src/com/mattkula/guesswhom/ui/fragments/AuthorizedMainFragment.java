@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.*;
+import android.widget.Button;
+import android.widget.TextView;
 import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.R;
+import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.ui.GameActivity;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.entities.Profile;
@@ -15,7 +18,9 @@ import com.sromku.simple.fb.entities.Profile;
  */
 public class AuthorizedMainFragment extends Fragment {
 
+    TextView welcomeText;
     ProfilePictureView profilePictureView;
+    Button newGameButton;
 
     SimpleFacebook simpleFacebook;
 
@@ -24,8 +29,10 @@ public class AuthorizedMainFragment extends Fragment {
         setHasOptionsMenu(true);
         View v =  inflater.inflate(R.layout.fragment_main_authorized, null);
 
+        welcomeText = (TextView)v.findViewById(R.id.text_welcome);
         profilePictureView = (ProfilePictureView)v.findViewById(R.id.facebook_profile_picture);
-        profilePictureView.setOnClickListener(new View.OnClickListener() {
+        newGameButton = (Button)v.findViewById(R.id.btn_new_game);
+        newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), GameActivity.class);
@@ -44,17 +51,13 @@ public class AuthorizedMainFragment extends Fragment {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch(item.getItemId()){
-//            case R.id.btn_fb_login
-//        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         simpleFacebook = SimpleFacebook.getInstance(getActivity());
+        if(PreferenceManager.isLoggedIn(getActivity())){
+            welcomeText.setText("Welcome to Guess Whom, " + PreferenceManager.getFirstName(getActivity()) + ".");
+            profilePictureView.setProfileId(PreferenceManager.getProfileId(getActivity()));
+        }
         makeMeRequest();
     }
 
@@ -64,22 +67,19 @@ public class AuthorizedMainFragment extends Fragment {
             @Override
             public void onComplete(Profile profile) {
                 profilePictureView.setProfileId(profile.getId());
+                welcomeText.setText("Welcome to Guess Whom, " + profile.getFirstName() + ".");
+                PreferenceManager.setFirstName(getActivity(), profile.getFirstName());
+                PreferenceManager.setProfileId(getActivity(), profile.getId());
             }
 
             @Override
-            public void onThinking() {
-
-            }
+            public void onThinking() {}
 
             @Override
-            public void onException(Throwable throwable) {
-
-            }
+            public void onException(Throwable throwable) {}
 
             @Override
-            public void onFail(String reason) {
-
-            }
+            public void onFail(String reason) {}
         });
     }
 }

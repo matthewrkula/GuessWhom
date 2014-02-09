@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:padding="20dip"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
     <TextView
+            android:id="@+id/text_welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You are now logged in."
             android:layout_gravity="center"
             />
 
@@ -16,7 +17,30 @@
             android:id="@+id/facebook_profile_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
             android:layout_gravity="center_horizontal"
+            />
+
+    <Button
+            android:id="@+id/btn_new_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dip"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:text="@string/new_game"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:background="@drawable/com_facebook_button_blue"
+            />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/games_in_progress"
+            android:textSize="20sp"
+            android:layout_marginTop="16dip"
             />
 
 </LinearLayout>

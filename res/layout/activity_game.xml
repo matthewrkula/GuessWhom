@@ -5,6 +5,103 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#ffe6e6e6">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="100dip"
+                        android:layout_height="100dip"
+                        android:layout_margin="8dip"
+                        android:background="#33ffffff">
+
+            <com.facebook.widget.ProfilePictureView
+                    android:id="@+id/image_my_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"/>
+
+            <TextView
+                    android:id="@+id/text_my_answer_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dip"
+                    android:background="#88000000"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="test text"
+                    android:textSize="10sp"
+                    />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dip">
+
+            <TextView
+                    android:id="@+id/text_question_asker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#ff888888"
+                    android:layout_marginTop="8dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    />
+            <TextView
+                    android:id="@+id/text_question_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#ff888888"
+                    android:layout_marginLeft="8dip"
+                    android:layout_below="@+id/text_question_asker"
+                    android:layout_alignParentLeft="true"
+                    />
+
+            <Spinner
+                    android:id="@+id/spinner_yes_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_question_text"
+                    android:layout_margin="8dip"
+                    />
+            <TextView
+                    android:id="@+id/text_and"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AND"
+                    android:textColor="#ff888888"
+                    android:textSize="20dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_toRightOf="@+id/spinner_yes_no"
+                    android:layout_alignBaseline="@+id/spinner_yes_no"
+                    />
+
+            <Button
+                    android:id="@+id/btn_guess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_and"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="4dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:text="ASK"
+                    android:background="@drawable/com_facebook_button_blue"
+                    android:textColor="@android:color/white"
+                    />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
     <fragment
             android:id="@+id/game_fragment"
             android:name="com.mattkula.guesswhom.ui.fragments.GameBoardFragment"

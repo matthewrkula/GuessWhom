@@ -43,5 +43,4 @@ public class PreferenceManager {
         editor.putString(PROFILE_ID, PROFILE_ID_DEFAULT);
         editor.commit();
     }
-
 }

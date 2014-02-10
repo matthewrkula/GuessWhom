@@ -41,6 +41,14 @@
             android:text="@string/games_in_progress"
             android:textSize="20sp"
             android:layout_marginTop="16dip"
+            android:focusable="false"
+            android:clickable="false"
+            />
+
+    <ListView
+            android:id="@+id/list_my_games"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             />
 
 </LinearLayout>

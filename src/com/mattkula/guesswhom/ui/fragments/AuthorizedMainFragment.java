@@ -3,17 +3,24 @@ package com.mattkula.guesswhom.ui.fragments;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.facebook.widget.FriendPickerFragment;
 import com.facebook.widget.ProfilePictureView;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
+import com.mattkula.guesswhom.ApplicationController;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.Constants;
 import com.mattkula.guesswhom.data.PreferenceManager;
@@ -41,7 +48,6 @@ public class AuthorizedMainFragment extends Fragment {
     Button newGameButton;
 
     SimpleFacebook simpleFacebook;
-    AsyncHttpClient httpClient = new AsyncHttpClient();
 
     Game[] games;
     ListView listMyGames;
@@ -117,10 +123,9 @@ public class AuthorizedMainFragment extends Fragment {
 
         ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.alert_profile_picture);
         picture.setProfileId(id);
-        final EditText editText = (EditText)v.findViewById(R.id.edit_first_question);
 
         AlertDialog d = new AlertDialog.Builder(getActivity())
-                .setTitle("New Game with " + name)
+                .setTitle("New Game with " + name + "?")
                 .setView(v)
                 .setPositiveButton("Start", new DialogInterface.OnClickListener() {
                     @Override
@@ -128,7 +133,7 @@ public class AuthorizedMainFragment extends Fragment {
                         dialogInterface.dismiss();
                         progressDialog.setTitle("Creating game...");
                         progressDialog.show();
-                        createNewGame(editText.getText().toString(), id);
+                        createNewGame(id);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -142,24 +147,34 @@ public class AuthorizedMainFragment extends Fragment {
         d.show();
     }
 
-    public void createNewGame(String questionText, String opponentId){
-        String url = String.format("%snew_game.json?opponent_id=%s&access_token=%s&question=%s",
+    public void createNewGame(String opponentId){
+        String url = String.format("%snew_game.json?opponent_id=%s&access_token=%s",
                 Constants.BASE_URL,
                 opponentId,
-                simpleFacebook.getAccessToken(),
-                questionText);
+                simpleFacebook.getAccessToken());
 
-        httpClient.get(getActivity(), url, new JsonHttpResponseHandler() {
+        JsonObjectRequest newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            public void onResponse(JSONObject response) {
                 if (progressDialog != null && progressDialog.isShowing())
                     progressDialog.dismiss();
                 Game game = getGame(response);
                 if (game != null)
                     startGameActivity(game);
             }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if (progressDialog != null && progressDialog.isShowing())
+                    progressDialog.dismiss();
+
+                Log.e("ASDF", volleyError.toString());
+            }
         });
+
+        ApplicationController.getInstance().getRequestQueue().add(newGameRequest);
     }
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -193,10 +208,10 @@ public class AuthorizedMainFragment extends Fragment {
 
     private void getMyGames(){
         String url = String.format("%s%s?user_id=%s", Constants.BASE_URL, "games.json", PreferenceManager.getProfileId(getActivity()));
-        httpClient.get(getActivity(), url, new JsonHttpResponseHandler(){
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
 
+        JsonArrayRequest arrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
                 games = new Game[response.length()];
                 for(int i=0; i < response.length(); i++){
 
@@ -209,13 +224,20 @@ public class AuthorizedMainFragment extends Fragment {
                     listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));
                 }
             }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
         });
 
+        ApplicationController.getInstance().getRequestQueue().add(arrayRequest);
     }
 
     private Game getGame(JSONObject obj){
         Game game;
         try {
+            String id = obj.getString("id");
             String opponent_id = obj.getString("opponent_id");
             String question = obj.getString("question");
             String gameResponse = obj.getString("response");
@@ -232,7 +254,7 @@ public class AuthorizedMainFragment extends Fragment {
                 example_answers[i] = new Answer(name, fb_id);
             }
 
-            game = new Game(opponent_id, question, gameResponse, whose_turn, creator_answer, opponent_answer, example_answers);
+            game = new Game(id, opponent_id, question, gameResponse, whose_turn, creator_answer, opponent_answer, example_answers);
         } catch (Exception e){
             e.printStackTrace();
             game = null;

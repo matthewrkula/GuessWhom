@@ -7,7 +7,8 @@ import java.io.Serializable;
  */
 public class Game implements Serializable{
 
-    public Game(String opponent_id, String question, String response, String whose_turn, String my_answer, String opponent_answer, Answer[] answers) {
+    public Game(String id, String opponent_id, String question, String response, String whose_turn, String my_answer, String opponent_answer, Answer[] answers) {
+        this.id = id;
         this.opponent_id = opponent_id;
         this.question = question;
         this.response = response;
@@ -17,6 +18,7 @@ public class Game implements Serializable{
         this.answers = answers;
     }
 
+    public String id;
     public String opponent_id;
     public String question;
     public String response;

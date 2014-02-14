@@ -4,11 +4,17 @@ import android.support.v4.app.Fragment;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.facebook.rebound.Spring;
+import com.facebook.rebound.SpringConfig;
+import com.facebook.rebound.SpringListener;
+import com.facebook.rebound.SpringSystem;
 import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.R;
+import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.data.models.Answer;
 import com.mattkula.guesswhom.data.models.Game;
 import com.sromku.simple.fb.SimpleFacebook;
@@ -31,28 +37,27 @@ public class GameBoardFragment extends Fragment {
     Game game;
 
     boolean[] isFaded = new boolean[24];
+    int fadedMap;
+
+    SpringSystem springSystem;
+    final SpringConfig springConfig = new SpringConfig(50, 4);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_gameboard, container, false);
 
+        springSystem = SpringSystem.create();
+
         mGridView = (GridView)v.findViewById(R.id.gridview);
         mGridView.setNumColumns(NUM_COLUMNS);
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(view.getAlpha() < 0.5)
-                    view.animate().alpha(1).start();
-                else
-                    view.animate().alpha(0.3f).start();
-
-                isFaded[i] = !isFaded[i];
-            }
-        });
 
         Point size = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getSize(size);
         mImageWidth = size.x / NUM_COLUMNS;
+
+        if(game != null)
+            fadedMap = PreferenceManager.getFadedMap(getActivity(), game.id);
+
         return v;
     }
 
@@ -64,6 +69,7 @@ public class GameBoardFragment extends Fragment {
 
     public void setGame(Game game) {
         this.game = game;
+        fadedMap = PreferenceManager.getFadedMap(getActivity(), game.id);
         mGridView.setAdapter(new GameBoardAdapter());
     }
 
@@ -86,7 +92,9 @@ public class GameBoardFragment extends Fragment {
 
         @Override
         public View getView(int i, View convertView, ViewGroup viewGroup) {
-            View returnView = View.inflate(getActivity(), R.layout.griditem_person, null);
+            final View returnView = View.inflate(getActivity(), R.layout.griditem_person, null);
+            final int pos = i;
+
             Answer friend = (Answer)getItem(i);
             returnView.setLayoutParams(new AbsListView.LayoutParams(mImageWidth, mImageWidth));
 
@@ -97,9 +105,85 @@ public class GameBoardFragment extends Fragment {
             TextView nameView = (TextView)returnView.findViewById(R.id.text_profile_name);
             nameView.setText(friend.name);
 
-            if(isFaded[i])
+            final Spring spring = springSystem.createSpring();
+            spring.setSpringConfig(springConfig);
+
+            spring.addListener(new SpringListener() {
+                @Override
+                public void onSpringUpdate(Spring spring) {
+                    float value = (float) spring.getCurrentValue();
+                    float scale = 1f - (value * 0.5f);
+                    returnView.setScaleX(scale);
+                    returnView.setScaleY(scale);
+                }
+
+                @Override
+                public void onSpringAtRest(Spring spring) {
+
+                }
+
+                @Override
+                public void onSpringActivate(Spring spring) {
+
+                }
+
+                @Override
+                public void onSpringEndStateChange(Spring spring) {
+
+                }
+            });
+
+            returnView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    switch(motionEvent.getAction()){
+                        case MotionEvent.ACTION_DOWN:
+                            spring.setEndValue(1);
+                            return true;
+                        case MotionEvent.ACTION_CANCEL:
+                            spring.setEndValue(0);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            spring.setEndValue(0);
+
+                            if(isFaded(pos))
+                                view.animate().alpha(1).start();
+                            else
+                                view.animate().alpha(0.3f).start();
+                            swapBit(pos);
+                    }
+                    return false;
+                }
+            });
+
+            returnView.setTag(spring);
+
+            if(isFaded(i))
                 returnView.setAlpha(0.3f);
+
             return returnView;
         }
+    }
+
+    private boolean isFaded(int position){
+        return ((fadedMap >> position) & 1) > 0;
+    }
+
+    private void swapBit(int position){
+        fadedMap = fadedMap ^ (1 << position);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(game != null)
+            PreferenceManager.setFadedMap(getActivity(), game.id, fadedMap);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(game != null)
+            PreferenceManager.setFadedMap(getActivity(), game.id, fadedMap);
     }
 }

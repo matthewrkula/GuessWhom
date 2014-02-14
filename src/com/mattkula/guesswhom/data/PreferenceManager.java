@@ -2,6 +2,7 @@ package com.mattkula.guesswhom.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 /**
  * Created by matt on 2/9/14.
@@ -31,6 +32,18 @@ public class PreferenceManager {
 
     public static String getProfileId(Context c) {
         return c.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).getString(PROFILE_ID, PROFILE_ID_DEFAULT);
+    }
+
+    public static void setFadedMap(Context c, String gameId, int tag){
+        Log.e("ASDF", String.format("Setting %s fadedMap to %d", gameId, tag));
+        SharedPreferences.Editor editor = c.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).edit();
+        editor.putInt(gameId, tag);
+        editor.commit();
+    }
+
+    public static int getFadedMap(Context c, String gameId) {
+        Log.e("ASDF", String.format("Getting %s fadedMap", gameId));
+        return c.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).getInt(gameId, 0);
     }
 
     public static boolean isLoggedIn(Context c){

@@ -13,8 +13,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Exc" />
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ASDF" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd9c3bcf-f25b-433b-a81e-19c7f2b7b4c2" name="Default" comment="" />
@@ -80,82 +79,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MyGamesAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/adapters/MyGamesAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="4" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="885">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#601#602#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AuthorizedMainFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="0" selection-start="1793" selection-end="1793" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="3315">
-              <folding>
-                <element signature="e#2188#2452#0" expanded="true" />
-                <element signature="e#2441#2442#0" expanded="true" />
-                <element signature="e#3188#3410#0" expanded="true" />
-                <element signature="e#3399#3400#0" expanded="true" />
-                <element signature="e#4714#5146#0" expanded="true" />
-                <element signature="e#5127#5128#0" expanded="true" />
-                <element signature="e#5193#5434#0" expanded="true" />
-                <element signature="e#5415#5416#0" expanded="true" />
-                <element signature="e#5845#6259#0" expanded="true" />
-                <element signature="e#6248#6249#0" expanded="true" />
-                <element signature="e#7483#8079#0" expanded="true" />
-                <element signature="e#8068#8069#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="listitem_games.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/listitem_games.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="36" selection-start="527" selection-end="527" vertical-scroll-proportion="-3.5294118" vertical-offset="0" max-vertical-offset="495">
+            <state line="258" column="31" selection-start="9998" selection-end="9998" vertical-scroll-proportion="0.0" vertical-offset="2621" max-vertical-offset="3225">
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="0" selection-start="3738" selection-end="3738" vertical-scroll-proportion="0.0" vertical-offset="1200" max-vertical-offset="1965">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_game.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/activity_game.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="21" selection-start="3634" selection-end="3634" vertical-scroll-proportion="-6.1764708" vertical-offset="930" max-vertical-offset="1740">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="GameBoardFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/GameBoardFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1060" selection-end="1060" vertical-scroll-proportion="0.18897638" vertical-offset="435" max-vertical-offset="1590">
+            <state line="28" column="0" selection-start="893" selection-end="893" vertical-scroll-proportion="0.69536424" vertical-offset="0" max-vertical-offset="2850">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="action_refreshimage.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/action_refreshimage.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="44" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="225">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/data/models/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="20" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="540">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1470">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ant.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ant.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="136" column="36" selection-start="4743" selection-end="4743" vertical-scroll-proportion="0.0" vertical-offset="2040" max-vertical-offset="3405">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loading_rotation.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/anim/loading_rotation.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="5" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="240">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu_fragment_authorized.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/menu/menu_fragment_authorized.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="31" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="285">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -182,25 +187,30 @@
         <option value="$PROJECT_DIR$/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/data/Constants.java" />
         <option value="$PROJECT_DIR$/res/layout/listitem_games.xml" />
-        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_friendpicker.xml" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/adapters/FriendListAdapter.java" />
         <option value="$USER_HOME$/android/github libraries/android-simple-facebook/Simple Facebook/src/com/sromku/simple/fb/entities/Profile.java" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/FriendPickerActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/networking/GameNetworkManager.java" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/res/layout/alert_newgame.xml" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/data/models/Answer.java" />
-        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/data/models/Game.java" />
         <option value="$PROJECT_DIR$/res/layout/fragment_main_authorized.xml" />
-        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/adapters/MyGamesAdapter.java" />
         <option value="$PROJECT_DIR$/res/layout/fragment_gameboard.xml" />
-        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/data/PreferenceManager.java" />
         <option value="$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/src/com/facebook/widget/ProfilePictureView.java" />
+        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/data/PreferenceManager.java" />
+        <option value="$PROJECT_DIR$/res/layout/alert_newgame.xml" />
+        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/data/models/Game.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_game.xml" />
+        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/networking/VolleyQueueSingleton.java" />
+        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/networking/GameNetworkManager.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ApplicationController.java" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java" />
+        <option value="$PROJECT_DIR$/res/anim/loading_rotation.xml" />
+        <option value="$PROJECT_DIR$/res/menu/menu_fragment_authorized.xml" />
+        <option value="$PROJECT_DIR$/res/layout/action_refreshimage.xml" />
+        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java" />
+        <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/GameBoardFragment.java" />
       </list>
     </option>
@@ -287,132 +297,6 @@
               <option name="myItemId" value="guesswhom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Guess Whom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GuessWhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guesswhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fragments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Guess Whom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GuessWhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guesswhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapters" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Guess Whom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GuessWhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guesswhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="networking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Guess Whom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GuessWhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guesswhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Guess Whom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GuessWhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guesswhom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -446,6 +330,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Guess Whom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GuessWhom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -464,7 +362,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/android/github libraries/android-async-http/library" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/rebound-v0.3.3.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -473,10 +371,13 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="d803e8ba" />
     <property name="FullScreen" value="false" />
     <property name="SearchEverywhereHistory" value="" />
+    <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/libs" />
+      <recent name="$PROJECT_DIR$/res/drawable-mdpi" />
+      <recent name="$PROJECT_DIR$/res/drawable-hdpi" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.mattkula.guesswhom" />
@@ -517,6 +418,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -542,19 +456,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -617,7 +518,7 @@
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="true" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
@@ -667,31 +568,31 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991913" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3299595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33906883" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959569" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991913" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -718,32 +619,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/GameBoardFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="16" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1275">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/griditem_person.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="14" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="345">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/fragment_gameboard.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="481" selection-end="481" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="300">
@@ -756,66 +631,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="405">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_game.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="466" selection-end="466" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="270">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/GameBoardFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="741" selection-end="741" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1455">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/griditem_person.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="14" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="345">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/fragment_gameboard.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="481" selection-end="481" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="300">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="49" selection-start="1605" selection-end="1605" vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="870">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="58" column="49" selection-start="1605" selection-end="1605" vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="870" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
@@ -852,9 +668,7 @@
     </entry>
     <entry file="file://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/src/com/facebook/AuthorizationClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16545">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16545" />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/android/android-sdk-linux/platforms/android-14/android.jar!/java/util/ArrayList.class">
@@ -867,31 +681,14 @@
         <state line="188" column="0" selection-start="9412" selection-end="9412" vertical-scroll-proportion="0.84347826" vertical-offset="2335" max-vertical-offset="2910" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/menu_fragment_authorized.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="45" selection-start="152" selection-end="152" vertical-scroll-proportion="0.10204082" vertical-offset="0" max-vertical-offset="588">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/src/com/facebook/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2160">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2160" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/src/com/facebook/widget/LoginButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="195" column="0" selection-start="7511" selection-end="7511" vertical-scroll-proportion="0.0" vertical-offset="2655" max-vertical-offset="10755">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#9026#9120#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="195" column="0" selection-start="7511" selection-end="7511" vertical-scroll-proportion="0.0" vertical-offset="2655" max-vertical-offset="10755" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/fragment_main_unauthorized.xml">
@@ -906,9 +703,7 @@
     </entry>
     <entry file="file://$USER_HOME$/android/github libraries/android-simple-facebook/Simple Facebook/src/com/sromku/simple/fb/SimpleFacebook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1469" column="19" selection-start="38794" selection-end="38794" vertical-scroll-proportion="0.96850395" vertical-offset="20160" max-vertical-offset="32970">
-          <folding />
-        </state>
+        <state line="1469" column="19" selection-start="38794" selection-end="38794" vertical-scroll-proportion="0.96850395" vertical-offset="20160" max-vertical-offset="32970" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
@@ -920,25 +715,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/data/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="27" selection-start="2712" selection-end="2712" vertical-scroll-proportion="0.0" vertical-offset="1110" max-vertical-offset="2355">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="8" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-          <folding />
-        </state>
+        <state line="8" column="0" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_friendpicker.xml">
@@ -953,76 +730,34 @@
     </entry>
     <entry file="file://$USER_HOME$/android/github libraries/android-simple-facebook/Simple Facebook/src/com/sromku/simple/fb/entities/Profile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="617" column="52" selection-start="14212" selection-end="14212" vertical-scroll-proportion="0.5106036" vertical-offset="8897" max-vertical-offset="9510">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="617" column="52" selection-start="14212" selection-end="14212" vertical-scroll-proportion="0.5106036" vertical-offset="8897" max-vertical-offset="9510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gen/com/mattkula/guesswhom/Manifest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/src/com/facebook/FacebookAuthorizationException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065" />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/android/android-sdk-linux/platforms/android-14/android.jar!/android/widget/ListView.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="0" selection-start="4829" selection-end="4829" vertical-scroll-proportion="0.0" vertical-offset="1187" max-vertical-offset="1800">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="61" selection-start="322" selection-end="322" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/alert_newgame.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="48" selection-start="902" selection-end="902" vertical-scroll-proportion="-6.470588" vertical-offset="0" max-vertical-offset="465">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/FriendPickerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="82" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1740">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1143#1606#0" expanded="true" />
-            <element signature="e#1595#1596#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="115" column="0" selection-start="4829" selection-end="4829" vertical-scroll-proportion="0.0" vertical-offset="1187" max-vertical-offset="1800" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/data/models/Answer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="26" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-          <folding />
-        </state>
+        <state line="11" column="26" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/fragment_main_authorized.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="47" selection-start="975" selection-end="975" vertical-scroll-proportion="-7.647059" vertical-offset="0" max-vertical-offset="885">
           <folding>
-            <element signature="e#1183#1201#0" expanded="true" />
+            <element signature="e#1183#1201#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1030,39 +765,14 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="1793" selection-end="1793" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="3315">
-          <folding>
-            <element signature="e#2188#2452#0" expanded="true" />
-            <element signature="e#2441#2442#0" expanded="true" />
-            <element signature="e#3188#3410#0" expanded="true" />
-            <element signature="e#3399#3400#0" expanded="true" />
-            <element signature="e#4714#5146#0" expanded="true" />
-            <element signature="e#5127#5128#0" expanded="true" />
-            <element signature="e#5193#5434#0" expanded="true" />
-            <element signature="e#5415#5416#0" expanded="true" />
-            <element signature="e#5845#6259#0" expanded="true" />
-            <element signature="e#6248#6249#0" expanded="true" />
-            <element signature="e#7483#8079#0" expanded="true" />
-            <element signature="e#8068#8069#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/adapters/MyGamesAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="4" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="885">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="27" column="4" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="885" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/listitem_games.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="36" selection-start="527" selection-end="527" vertical-scroll-proportion="-3.5294118" vertical-offset="0" max-vertical-offset="495">
+        <state line="12" column="36" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="495">
           <folding />
         </state>
       </provider>
@@ -1090,57 +800,14 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/src/com/facebook/widget/ProfilePictureView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="449" column="0" selection-start="17186" selection-end="17186" vertical-scroll-proportion="0.954323" vertical-offset="5655" max-vertical-offset="7665">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/data/PreferenceManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.9298532" vertical-offset="75" max-vertical-offset="765">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/data/models/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="74" selection-end="74" vertical-scroll-proportion="0.07340946" vertical-offset="0" max-vertical-offset="613">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/UnauthorizedMainFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="11" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.46166396" vertical-offset="47" max-vertical-offset="660">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/networking/GameNetworkManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="19" selection-start="719" selection-end="719" vertical-scroll-proportion="0.51968503" vertical-offset="0" max-vertical-offset="635">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/adapters/FriendListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="18" selection-start="650" selection-end="650" vertical-scroll-proportion="0.56692916" vertical-offset="0" max-vertical-offset="945">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="24" column="18" selection-start="650" selection-end="650" vertical-scroll-proportion="0.56692916" vertical-offset="0" max-vertical-offset="945" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_game.xml">
+    <entry file="file://$PROJECT_DIR$/res/layout/alert_newgame.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="21" selection-start="3634" selection-end="3634" vertical-scroll-proportion="-6.1764708" vertical-offset="930" max-vertical-offset="1740">
+        <state line="13" column="38" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="330">
           <folding />
         </state>
       </provider>
@@ -1148,18 +815,155 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_game.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="0" selection-start="3377" selection-end="3377" vertical-scroll-proportion="0.0" vertical-offset="1185" max-vertical-offset="1740">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/data/PreferenceManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="945" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/UnauthorizedMainFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1261" selection-end="1261" vertical-scroll-proportion="0.0" vertical-offset="47" max-vertical-offset="660">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="61" selection-start="322" selection-end="322" vertical-scroll-proportion="0.15306123" vertical-offset="0" max-vertical-offset="588">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/FriendPickerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="82" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1485" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/networking/GameNetworkManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ApplicationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="739" selection-end="739" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proguard-project.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GuessWhom.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="705">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1470">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="26" selection-start="668" selection-end="668" vertical-scroll-proportion="0.31810766" vertical-offset="0" max-vertical-offset="613">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/data/models/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="20" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="0" selection-start="3738" selection-end="3738" vertical-scroll-proportion="0.0" vertical-offset="1200" max-vertical-offset="1965">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="136" column="36" selection-start="4743" selection-end="4743" vertical-scroll-proportion="0.0" vertical-offset="1365" max-vertical-offset="2805">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/anim/loading_rotation.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="5" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/action_refreshimage.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="44" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="225">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="258" column="31" selection-start="9998" selection-end="9998" vertical-scroll-proportion="0.0" vertical-offset="2621" max-vertical-offset="3225">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/menu/menu_fragment_authorized.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="31" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="30" selection-start="4378" selection-end="4378" vertical-scroll-proportion="0.588907" vertical-offset="1304" max-vertical-offset="2265" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/src/com/facebook/widget/ProfilePictureView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="408" column="0" selection-start="15382" selection-end="15382" vertical-scroll-proportion="0.60596025" vertical-offset="5124" max-vertical-offset="7455">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/GameBoardFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1060" selection-end="1060" vertical-scroll-proportion="0.18897638" vertical-offset="435" max-vertical-offset="1590">
+        <state line="28" column="0" selection-start="893" selection-end="893" vertical-scroll-proportion="0.69536424" vertical-offset="0" max-vertical-offset="2850">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1183,7 +987,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android (main)|Android</last-edited>
+          <last-edited>Android</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

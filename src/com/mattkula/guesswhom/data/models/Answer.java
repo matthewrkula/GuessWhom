@@ -1,5 +1,7 @@
 package com.mattkula.guesswhom.data.models;
 
+import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
 
 /**
@@ -12,6 +14,8 @@ public class Answer implements Serializable{
         this.fb_id = fb_id;
     }
 
+    @Expose
     public String name;
+    @Expose
     public String fb_id;
 }

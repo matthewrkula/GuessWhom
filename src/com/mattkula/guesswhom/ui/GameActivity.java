@@ -71,7 +71,7 @@ public class GameActivity extends FragmentActivity {
         if(game.opponent_id.equals(myId)){
             myAnswerId = game.opponent_answer;
         }else{
-            myAnswerId = game.my_answer;
+            myAnswerId = game.creator_answer;
         }
 
         ((ProfilePictureView)findViewById(R.id.image_my_answer)).setProfileId(myAnswerId);

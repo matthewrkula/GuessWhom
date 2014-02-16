@@ -18,8 +18,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.facebook.widget.FriendPickerFragment;
 import com.facebook.widget.ProfilePictureView;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mattkula.guesswhom.ApplicationController;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.Constants;
@@ -209,20 +213,34 @@ public class AuthorizedMainFragment extends Fragment {
     private void getMyGames(){
         String url = String.format("%s%s?user_id=%s", Constants.BASE_URL, "games.json", PreferenceManager.getProfileId(getActivity()));
 
-        JsonArrayRequest arrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+//        JsonArrayRequest arrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+//            @Override
+//            public void onResponse(JSONArray response) {
+//                games = new Game[response.length()];
+//                for(int i=0; i < response.length(); i++){
+//
+//                    try {
+//                        games[i] = getGame(response.getJSONObject(i));
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError volleyError) {
+//
+//            }
+//        });
+        StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONArray response) {
-                games = new Game[response.length()];
-                for(int i=0; i < response.length(); i++){
+            public void onResponse(String s) {
+                Gson gson = new Gson();
+                games = gson.fromJson(s, Game[].class);
 
-                    try {
-                        games[i] = getGame(response.getJSONObject(i));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));
-                }
+                listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -231,14 +249,16 @@ public class AuthorizedMainFragment extends Fragment {
             }
         });
 
-        ApplicationController.getInstance().getRequestQueue().add(arrayRequest);
+        ApplicationController.getInstance().getRequestQueue().add(request);
     }
 
     private Game getGame(JSONObject obj){
         Game game;
+
         try {
             String id = obj.getString("id");
             String opponent_id = obj.getString("opponent_id");
+            String lastQuestion = obj.getString("lastquestion");
             String question = obj.getString("question");
             String gameResponse = obj.getString("response");
             String whose_turn = obj.getString("whose_turn");
@@ -254,7 +274,8 @@ public class AuthorizedMainFragment extends Fragment {
                 example_answers[i] = new Answer(name, fb_id);
             }
 
-            game = new Game(id, opponent_id, question, gameResponse, whose_turn, creator_answer, opponent_answer, example_answers);
+
+            game = new Game(id, opponent_id, lastQuestion, question, gameResponse, whose_turn, creator_answer, opponent_answer, example_answers);
         } catch (Exception e){
             e.printStackTrace();
             game = null;

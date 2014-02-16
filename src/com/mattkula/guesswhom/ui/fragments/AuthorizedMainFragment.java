@@ -58,6 +58,13 @@ public class AuthorizedMainFragment extends Fragment {
 
     ProgressDialog progressDialog;
 
+    AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            startGameActivity(games[i]);
+        }
+    };
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -92,17 +99,23 @@ public class AuthorizedMainFragment extends Fragment {
         makeMeRequest();
         getMyGames();
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.menu_fragment_authorized, menu);
+    }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.menu_refresh:
+                getMyGames();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
-    AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                startGameActivity(games[i]);
-            }
-        };
 
     private void startGameActivity(Game game){
         Intent intent = new Intent(getActivity(), GameActivity.class);
@@ -122,7 +135,7 @@ public class AuthorizedMainFragment extends Fragment {
         }
     }
 
-    private void showNewGameDialog(final String id, String name){
+    private void showNewGameDialog(final String id, final String name){
         View v = View.inflate(getActivity(), R.layout.alert_newgame, null);
 
         ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.alert_profile_picture);
@@ -135,9 +148,8 @@ public class AuthorizedMainFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
-                        progressDialog.setTitle("Creating game...");
-                        progressDialog.show();
-                        createNewGame(id);
+                        updateProgressDialog(true, "Creating game...");
+                        createNewGame(id, name);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -151,7 +163,7 @@ public class AuthorizedMainFragment extends Fragment {
         d.show();
     }
 
-    public void createNewGame(String opponentId){
+    public void createNewGame(String opponentId, final String opponentName){
         String url = String.format("%snew_game.json?opponent_id=%s&access_token=%s",
                 Constants.BASE_URL,
                 opponentId,
@@ -160,31 +172,23 @@ public class AuthorizedMainFragment extends Fragment {
         JsonObjectRequest newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                if (progressDialog != null && progressDialog.isShowing())
-                    progressDialog.dismiss();
-                Game game = getGame(response);
-                if (game != null)
+                updateProgressDialog(false, null);
+
+                Game game = new Gson().fromJson(response.toString(), Game.class);
+                if (game != null){
+                    PreferenceManager.setOpponentName(getActivity(), game.id, opponentName);
                     startGameActivity(game);
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                if (progressDialog != null && progressDialog.isShowing())
-                    progressDialog.dismiss();
-
+                updateProgressDialog(false, null);
                 Log.e("ASDF", volleyError.toString());
             }
         });
 
         ApplicationController.getInstance().getRequestQueue().add(newGameRequest);
-    }
-
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        menu.clear();
-        inflater.inflate(R.menu.menu_fragment_authorized, menu);
     }
 
     private void makeMeRequest(){
@@ -212,33 +216,14 @@ public class AuthorizedMainFragment extends Fragment {
 
     private void getMyGames(){
         String url = String.format("%s%s?user_id=%s", Constants.BASE_URL, "games.json", PreferenceManager.getProfileId(getActivity()));
+        updateProgressDialog(true, "Getting games");
 
-//        JsonArrayRequest arrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
-//            @Override
-//            public void onResponse(JSONArray response) {
-//                games = new Game[response.length()];
-//                for(int i=0; i < response.length(); i++){
-//
-//                    try {
-//                        games[i] = getGame(response.getJSONObject(i));
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                    listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError volleyError) {
-//
-//            }
-//        });
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 Gson gson = new Gson();
                 games = gson.fromJson(s, Game[].class);
+                updateProgressDialog(false, null);
 
                 listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));
             }
@@ -252,34 +237,16 @@ public class AuthorizedMainFragment extends Fragment {
         ApplicationController.getInstance().getRequestQueue().add(request);
     }
 
-    private Game getGame(JSONObject obj){
-        Game game;
-
-        try {
-            String id = obj.getString("id");
-            String opponent_id = obj.getString("opponent_id");
-            String lastQuestion = obj.getString("lastquestion");
-            String question = obj.getString("question");
-            String gameResponse = obj.getString("response");
-            String whose_turn = obj.getString("whose_turn");
-            String creator_answer = obj.getString("creator_answer");
-            String opponent_answer = obj.getString("opponent_answer");
-            JSONArray example_answers_arr = obj.getJSONArray("answers");
-            Answer[] example_answers =  new Answer[example_answers_arr.length()];
-
-            for(int i=0; i < example_answers.length; i++){
-                JSONObject answer = example_answers_arr.getJSONObject(i);
-                String name = answer.getString("name");
-                String fb_id = answer.getString("fb_id");
-                example_answers[i] = new Answer(name, fb_id);
-            }
-
-
-            game = new Game(id, opponent_id, lastQuestion, question, gameResponse, whose_turn, creator_answer, opponent_answer, example_answers);
-        } catch (Exception e){
-            e.printStackTrace();
-            game = null;
-        }
-        return game;
+    // true = show, false hide, title can be null
+    private void updateProgressDialog(boolean show, String title){
+       if(progressDialog != null){
+           if(show){
+               if(title != null)
+                   progressDialog.setTitle(title);
+               progressDialog.show();
+           }
+           else
+               progressDialog.dismiss();
+       }
     }
 }

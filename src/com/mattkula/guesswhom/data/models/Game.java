@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class Game implements Serializable{
 
-    public Game(String id, String opponent_id, String last_question, String question, String response, String whose_turn, String creator_answer, String opponent_answer, Answer[] answers) {
+    public Game(String id, String opponent_id, String last_question, String question, String response, String whose_turn, String creator_answer, String opponent_answer, Answer[] answers, int turn_count) {
         this.id = id;
         this.opponent_id = opponent_id;
         this.lastquestion = last_question;
@@ -19,6 +19,7 @@ public class Game implements Serializable{
         this.creator_answer = creator_answer;
         this.opponent_answer = opponent_answer;
         this.answers = answers;
+        this.turn_count = turn_count;
     }
 
     @Expose
@@ -39,4 +40,6 @@ public class Game implements Serializable{
     public String opponent_answer;
     @Expose
     public Answer[] answers;
+    @Expose
+    public int turn_count;
 }

@@ -16,17 +16,16 @@ import android.widget.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.ApplicationController;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.Constants;
 import com.mattkula.guesswhom.data.PreferenceManager;
+import com.mattkula.guesswhom.data.models.Answer;
 import com.mattkula.guesswhom.data.models.Game;
 import com.mattkula.guesswhom.ui.fragments.GameBoardFragment;
 import com.sromku.simple.fb.SimpleFacebook;
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
@@ -34,7 +33,7 @@ import java.net.URLEncoder;
 /**
  * Created by Matt on 2/8/14.
  */
-public class GameActivity extends FragmentActivity {
+public class GameActivity extends FragmentActivity implements GameBoardFragment.OnGuessListener {
 
     public static final String EXTRA_GAME = "game";
 
@@ -43,8 +42,8 @@ public class GameActivity extends FragmentActivity {
 
     Game game;
 
-    Spinner questionSpinner;
-    TextView askerText;
+    TextView replyText;
+    TextView questionText;
     Button askButton;
     ProgressDialog progressDialog;
 
@@ -79,48 +78,67 @@ public class GameActivity extends FragmentActivity {
             if(game.answers[i].fb_id.equals(myAnswerId))
                 ((TextView)findViewById(R.id.text_my_answer_name)).setText(game.answers[i].name);
 
-        askerText = (TextView)findViewById(R.id.text_question_asker);
-        questionSpinner = (Spinner)findViewById(R.id.spinner_yes_no);
         askButton = (Button)findViewById(R.id.btn_ask);
+        replyText = (TextView)findViewById(R.id.text_reply);
+        questionText = (TextView)findViewById(R.id.text_question_text);
 
         if(myId.equals(game.whose_turn))
             itIsMyTurn();
         else
             itIsTheirTurn();
 
-        ((TextView)findViewById(R.id.text_question_text)).setText(game.question);
+        if(game.turn_count == 0){
+            askButton.setText("ASK");
+            questionText.setVisibility(View.GONE);
+            replyText.setVisibility(View.GONE);
+        }else if(game.turn_count == 1){
+            replyText.setVisibility(View.GONE);
+        }
     }
 
     private void itIsTheirTurn(){
-        askerText.setText("You asked:");
-        questionSpinner.setVisibility(View.INVISIBLE);
+        String s = String.format("You asked \"%s\".", game.question);
+        questionText.setText(s);
         askButton.setVisibility(View.INVISIBLE);
-        ((TextView)findViewById(R.id.text_and)).setVisibility(View.INVISIBLE);
+        s = String.format("You answered \"%s\" to \"%s\".", game.response, game.lastquestion);
+        replyText.setText(s);
     }
 
     private void itIsMyTurn(){
-        askerText.setText("They asked:");
-        questionSpinner.setAdapter(new SpinAdapter(getApplicationContext(), 0, new String[]{"Yes", "No"}));
+        String s = String.format("They asked \"%s\".", game.question);
+        questionText.setText(s);
         askButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 askQuestion();
             }
         });
+        s = String.format("They answered \"%s\" to \"%s\".", game.response, game.lastquestion);
+        replyText.setText(s);
     }
 
     private void askQuestion(){
-        final EditText v = new EditText(this);
+        LinearLayout layout = (LinearLayout)getLayoutInflater().inflate(R.layout.alert_reply, null, false);
+        TextView question = (TextView)layout.findViewById(R.id.text_question);
+        final EditText newQuestion = (EditText)layout.findViewById(R.id.edit_new_question);
+        final EditText answer = (EditText)layout.findViewById(R.id.edit_response);
+
+        if(game.turn_count == 0){
+            question.setVisibility(View.GONE);
+            answer.setVisibility(View.GONE);
+        }
+
+        question.setText(game.question);
         AlertDialog d = new AlertDialog.Builder(this)
                 .setTitle("Please ask yes/no question.")
-                .setView(v)
+                .setView(layout)
                 .setPositiveButton("Ask", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                         progressDialog.setTitle("Sending question...");
                         progressDialog.show();
-                        sendQuestion(v.getText().toString());
+                        sendQuestion(newQuestion.getText().toString(), answer.getText().toString());
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -133,14 +151,15 @@ public class GameActivity extends FragmentActivity {
         d.show();
     }
 
-    private void sendQuestion(String text){
+    private void sendQuestion(String text, String answer){
         text = URLEncoder.encode(text);
+        answer = URLEncoder.encode(answer);
 
         String url = String.format("%supdate/%s.json?question=%s&response=%s",
                 Constants.BASE_URL,
                 game.id,
                 text,
-                questionSpinner.getSelectedItem().toString());
+                answer);
 
         Log.e("ASDF", url);
         JsonObjectRequest newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
@@ -190,6 +209,31 @@ public class GameActivity extends FragmentActivity {
                 finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onGuess(final Answer answer) {
+
+        AlertDialog d = new AlertDialog.Builder(this)
+                .setTitle("Do you want to guess " + answer.name + "?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        guessAnswer(answer);
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).create();
+
+        d.show();
+    }
+
+    private void guessAnswer(Answer answer){
+
+
     }
 
     private class SpinAdapter extends ArrayAdapter<String> {

@@ -14,6 +14,9 @@ public class PreferenceManager {
     public static final String PROFILE_ID = "profile_id";
     public static final String PROFILE_ID_DEFAULT = "-1";
 
+    public static final String FADED_PREFERENCES = "faded_maps";
+    public static final String OPPONENT_NAME_PREFERENCES = "opponent_name";
+
     public static void setFirstName(Context c, String firstName){
         SharedPreferences.Editor editor = c.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).edit();
         editor.putString(FIRST_NAME, firstName);
@@ -35,15 +38,23 @@ public class PreferenceManager {
     }
 
     public static void setFadedMap(Context c, String gameId, int tag){
-        Log.e("ASDF", String.format("Setting %s fadedMap to %d", gameId, tag));
-        SharedPreferences.Editor editor = c.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = c.getSharedPreferences(FADED_PREFERENCES, Context.MODE_PRIVATE).edit();
         editor.putInt(gameId, tag);
         editor.commit();
     }
 
     public static int getFadedMap(Context c, String gameId) {
-        Log.e("ASDF", String.format("Getting %s fadedMap", gameId));
-        return c.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE).getInt(gameId, 0);
+        return c.getSharedPreferences(FADED_PREFERENCES, Context.MODE_PRIVATE).getInt(gameId, 0);
+    }
+
+    public static void setOpponentName(Context c, String gameId, String name){
+        SharedPreferences.Editor editor = c.getSharedPreferences(OPPONENT_NAME_PREFERENCES, Context.MODE_PRIVATE).edit();
+        editor.putString(gameId, name);
+        editor.commit();
+    }
+
+    public static String getOpponentName(Context c, String gameId) {
+        return c.getSharedPreferences(OPPONENT_NAME_PREFERENCES, Context.MODE_PRIVATE).getString(gameId, "null");
     }
 
     public static boolean isLoggedIn(Context c){

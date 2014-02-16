@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.R;
+import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.data.models.Game;
 
 /**
@@ -40,13 +41,15 @@ public class MyGamesAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View convertview, ViewGroup viewGroup) {
         View v = convertview;
+        Game game = games[i];
         if(v == null)
             v = View.inflate(c, R.layout.listitem_games, null);
 
         TextView opponent = (TextView)v.findViewById(R.id.text_opponent);
-        opponent.setText(games[i].question);
+
+        opponent.setText(game.whose_turn.equals(PreferenceManager.getProfileId(c)) ? "Your turn" : PreferenceManager.getOpponentName(c, game.id) + "'s turn");
         ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.game_profile_picture);
-        picture.setProfileId(games[i].opponent_id);
+        picture.setProfileId(game.opponent_id);
 
         return v;
     }

@@ -1,5 +1,7 @@
 package com.mattkula.guesswhom.ui.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -38,6 +40,7 @@ public class GameBoardFragment extends Fragment {
 
     boolean[] isFaded = new boolean[24];
     int fadedMap;
+    OnGuessListener listener;
 
     SpringSystem springSystem;
     final SpringConfig springConfig = new SpringConfig(50, 4);
@@ -95,11 +98,14 @@ public class GameBoardFragment extends Fragment {
             final View returnView = View.inflate(getActivity(), R.layout.griditem_person, null);
             final int pos = i;
 
-            Answer friend = (Answer)getItem(i);
+            listener = (OnGuessListener)getActivity();
+
+            final Answer friend = (Answer)getItem(i);
             returnView.setLayoutParams(new AbsListView.LayoutParams(mImageWidth, mImageWidth));
 
             ProfilePictureView pictureView = (ProfilePictureView)returnView.findViewById(R.id.image_profile_picture);
             pictureView.setLayoutParams(new RelativeLayout.LayoutParams(mImageWidth, mImageWidth));
+            pictureView.setPresetSize(ProfilePictureView.CUSTOM);
             pictureView.setProfileId(friend.fb_id);
 
             TextView nameView = (TextView)returnView.findViewById(R.id.text_profile_name);
@@ -139,7 +145,7 @@ public class GameBoardFragment extends Fragment {
                     switch(motionEvent.getAction()){
                         case MotionEvent.ACTION_DOWN:
                             spring.setEndValue(1);
-                            return true;
+                            break;
                         case MotionEvent.ACTION_CANCEL:
                             spring.setEndValue(0);
                             break;
@@ -152,6 +158,14 @@ public class GameBoardFragment extends Fragment {
                                 view.animate().alpha(0.3f).start();
                             swapBit(pos);
                     }
+                    return false;
+                }
+            });
+
+            returnView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    listener.onGuess(friend);
                     return false;
                 }
             });
@@ -185,5 +199,9 @@ public class GameBoardFragment extends Fragment {
         super.onSaveInstanceState(outState);
         if(game != null)
             PreferenceManager.setFadedMap(getActivity(), game.id, fadedMap);
+    }
+
+    public interface OnGuessListener {
+        public void onGuess(Answer answer);
     }
 }

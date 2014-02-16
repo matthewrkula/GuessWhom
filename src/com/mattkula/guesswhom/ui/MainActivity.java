@@ -71,9 +71,6 @@ public class MainActivity extends FragmentActivity {
             case R.id.menu_item_fb_logout:
                 mSimpleFacebook.logout(logoutListener);
                 return false;
-            case R.id.menu_refresh:
-                //TODO refresh page
-                return false;
         }
         return super.onOptionsItemSelected(item);
     }

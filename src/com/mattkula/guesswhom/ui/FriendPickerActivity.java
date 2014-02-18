@@ -5,8 +5,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.ui.adapters.FriendListAdapter;
@@ -26,8 +30,11 @@ public class FriendPickerActivity extends Activity {
 
     SimpleFacebook simpleFacebook;
 
+    EditText friendFilterEdit;
     ListView friendList;
     List<Profile> mFriends;
+
+    FriendListAdapter mAdapter;
 
     String selectedId= "-1";
 
@@ -35,17 +42,33 @@ public class FriendPickerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friendpicker);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         friendList = (ListView)findViewById(R.id.list_friend_picker);
         friendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent();
-                intent.putExtra(FRIEND_PICKER_EXTRA_ID, mFriends.get(i).getId());
-                intent.putExtra(FRIEND_PICKER_EXTRA_NAME, mFriends.get(i).getName());
+                intent.putExtra(FRIEND_PICKER_EXTRA_ID, ((Profile)friendList.getAdapter().getItem(i)).getId());
+                intent.putExtra(FRIEND_PICKER_EXTRA_NAME, ((Profile)friendList.getAdapter().getItem(i)).getName());
                 setResult(RESULT_OK, intent);
                 finish();
             }
+        });
+
+        friendFilterEdit = (EditText)findViewById(R.id.edit_friend_filter);
+        friendFilterEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+                if(mAdapter != null)
+                    mAdapter.getFilter().filter(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
         });
     }
 
@@ -81,7 +104,9 @@ public class FriendPickerActivity extends Activity {
                     super.onPostExecute(aVoid);
                     if(dialog != null && dialog.isShowing())
                         dialog.dismiss();
-                    friendList.setAdapter(new FriendListAdapter(mFriends, FriendPickerActivity.this));
+
+                    mAdapter = new FriendListAdapter(mFriends, FriendPickerActivity.this);
+                    friendList.setAdapter(mAdapter);
                 }
             }.execute();
         }
@@ -107,4 +132,14 @@ public class FriendPickerActivity extends Activity {
 
         }
     };
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -1,6 +1,5 @@
 package com.mattkula.guesswhom.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,7 +16,6 @@ import android.widget.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.ApplicationController;
 import com.mattkula.guesswhom.R;
@@ -28,7 +26,6 @@ import com.mattkula.guesswhom.data.models.Game;
 import com.mattkula.guesswhom.ui.fragments.GameBoardFragment;
 import com.sromku.simple.fb.SimpleFacebook;
 import org.json.JSONObject;
-import android.support.v7.appcompat.*;
 
 import java.net.URLEncoder;
 
@@ -44,10 +41,10 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
 
     Game game;
 
+    Button askButton;
+    TextView hideText;
     TextView replyText;
     TextView questionText;
-    TextView hideText;
-    Button askButton;
     ProgressDialog progressDialog;
 
     String myAnswerId;
@@ -64,7 +61,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         if(game == null)
             throw new IllegalStateException("No game sent to GameActivity");
 
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressDialog = new ProgressDialog(this);
 
@@ -132,25 +129,21 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
 
     private void itIsTheirTurn(){
         myTurn = false;
-        String s = String.format("You asked \"%s\".", game.question);
-        questionText.setText(s);
+        questionText.setText(String.format("You asked \"%s\".", game.question));
         askButton.setVisibility(View.INVISIBLE);
-        s = String.format("You answered \"%s\" to \"%s\".", game.response, game.lastquestion);
-        replyText.setText(s);
+        replyText.setText(String.format("You answered \"%s\" to \"%s\".", game.response, game.lastquestion));
     }
 
     private void itIsMyTurn(){
         myTurn = true;
-        String s = String.format("They asked \"%s\".", game.question);
-        questionText.setText(s);
+        questionText.setText(String.format("They asked \"%s\".", game.question));
         askButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 askQuestion();
             }
         });
-        s = String.format("They answered \"%s\" to \"%s\".", game.response, game.lastquestion);
-        replyText.setText(s);
+        replyText.setText(String.format("They answered \"%s\" to \"%s\".", game.response, game.lastquestion));
     }
 
     private void askQuestion(){
@@ -166,7 +159,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
 
         question.setText(game.question);
         AlertDialog d = new AlertDialog.Builder(this)
-                .setTitle("Please ask yes/no question.")
+                .setTitle("Ask your question.")
                 .setView(layout)
                 .setPositiveButton("Ask", new DialogInterface.OnClickListener() {
                     @Override
@@ -241,12 +234,16 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        if(e.getText().toString() == null || e.getText().toString().equals("")){
+                            Toast.makeText(GameActivity.this, "Repond to their question before sending!", Toast.LENGTH_LONG).show();
+                            return;
+                        }
                         guessAnswer(answer, e.getText().toString());
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
+//                        dialogInterface.dismiss();
                     }
                 }).create();
 

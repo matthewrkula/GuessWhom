@@ -5,6 +5,13 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <EditText
+            android:id="@+id/edit_friend_filter"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="Search"/>
+
     <ListView
             android:id="@+id/list_friend_picker"
             android:layout_width="match_parent"

@@ -49,6 +49,7 @@
             android:id="@+id/list_my_games"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+
             />
 
 </LinearLayout>

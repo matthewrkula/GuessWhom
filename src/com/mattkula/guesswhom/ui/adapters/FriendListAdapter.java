@@ -1,57 +1,97 @@
 package com.mattkula.guesswhom.ui.adapters;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.R;
 import com.sromku.simple.fb.entities.Profile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by matt on 2/9/14.
  */
-public class FriendListAdapter extends BaseAdapter {
+public class FriendListAdapter extends BaseAdapter implements Filterable{
 
     List<Profile> friends;
+    List<Profile> friendsFiltered;
     Context c;
 
     public FriendListAdapter(List<Profile> friends, Context c) {
         this.friends = friends;
+        this.friendsFiltered = friends;
         this.c = c;
     }
 
     @Override
     public int getCount() {
-        return friends.size();
+        return friendsFiltered.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return friends.get(i);
+        return friendsFiltered.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return Long.parseLong(friends.get(i).getId());
+        return Long.parseLong(friendsFiltered.get(i).getId());
     }
 
     @Override
     public View getView(int i, View convertview, ViewGroup viewGroup) {
         View v = convertview;
+        Profile friend = friendsFiltered.get(i);
         if(v == null)
             v = View.inflate(c, R.layout.listitem_games, null);
 
         TextView opponent = (TextView)v.findViewById(R.id.text_opponent);
-        opponent.setText(friends.get(i).getName());
+        opponent.setText(friend.getName());
         ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.game_profile_picture);
         picture.setPresetSize(ProfilePictureView.SMALL);
-        picture.setProfileId(friends.get(i).getId());
+        picture.setProfileId(friend.getId());
 
         return v;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                FilterResults results = new FilterResults();
+                List<Profile> myFilter = new ArrayList<Profile>();
+
+                if(charSequence.length() == 0){
+                    results.values = friends;
+                    results.count = friends.size();
+                    return results;
+                }
+
+                for(Profile profile : friends){
+                    String name = profile.getName();
+                    if(name.toLowerCase().contains(charSequence.toString().toLowerCase()))
+                        myFilter.add(profile);
+                }
+
+                results.values = myFilter;
+                results.count = myFilter.size();
+
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                friendsFiltered = (List<Profile>)filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }

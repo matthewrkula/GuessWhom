@@ -28,6 +28,8 @@ import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.entities.Profile;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+
 /**
  * Created by matt on 2/8/14.
  */
@@ -207,13 +209,16 @@ public class AuthorizedMainFragment extends Fragment {
             }
 
             @Override
-            public void onThinking() {}
+            public void onThinking() {
+            }
 
             @Override
-            public void onException(Throwable throwable) {}
+            public void onException(Throwable throwable) {
+            }
 
             @Override
-            public void onFail(String reason) {}
+            public void onFail(String reason) {
+            }
         });
     }
 
@@ -226,6 +231,7 @@ public class AuthorizedMainFragment extends Fragment {
             @Override
             public void onResponse(String s) {
                 games = gson.fromJson(s, Game[].class);
+                Arrays.sort(games);
                 updateProgressDialog(false, null);
 
                 listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));

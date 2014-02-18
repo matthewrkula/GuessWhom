@@ -162,6 +162,13 @@ public class GameBoardFragment extends Fragment {
                 }
             });
 
+            returnView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
             returnView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {

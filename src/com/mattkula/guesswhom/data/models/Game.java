@@ -27,6 +27,10 @@ public class Game implements Serializable{
     @Expose
     public String opponent_id;
     @Expose
+    public String opponent_name;
+    @Expose
+    public String creator_name;
+    @Expose
     public String lastquestion;
     @Expose
     public String question;

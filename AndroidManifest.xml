@@ -10,15 +10,18 @@
                  android:theme="@style/AppTheme"
                  android:name=".ApplicationController">
         <activity android:name=".ui.MainActivity"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".ui.GameActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".ui.FriendPickerActivity"/>
-        <activity android:name="com.facebook.LoginActivity"/>
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.FriendPickerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.facebook.LoginActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

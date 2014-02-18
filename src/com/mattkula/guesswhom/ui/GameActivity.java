@@ -47,6 +47,11 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
     Button askButton;
     ProgressDialog progressDialog;
 
+    String myAnswerId;
+    String otherAnswerId;
+
+    boolean myTurn = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,13 +69,21 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         setUpHeader();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        simpleFacebook = SimpleFacebook.getInstance();
+        fragment.setGame(game);
+    }
+
     private void setUpHeader(){
-        String myAnswerId;
         String myId = PreferenceManager.getProfileId(this);
         if(game.opponent_id.equals(myId)){
             myAnswerId = game.opponent_answer;
+            otherAnswerId = game.creator_answer;
         }else{
             myAnswerId = game.creator_answer;
+            otherAnswerId = game.opponent_answer;
         }
 
         ((ProfilePictureView)findViewById(R.id.image_my_answer)).setProfileId(myAnswerId);
@@ -97,6 +110,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
     }
 
     private void itIsTheirTurn(){
+        myTurn = false;
         String s = String.format("You asked \"%s\".", game.question);
         questionText.setText(s);
         askButton.setVisibility(View.INVISIBLE);
@@ -105,6 +119,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
     }
 
     private void itIsMyTurn(){
+        myTurn = true;
         String s = String.format("They asked \"%s\".", game.question);
         questionText.setText(s);
         askButton.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +153,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
                         dialogInterface.dismiss();
                         progressDialog.setTitle("Sending question...");
                         progressDialog.show();
-                        sendQuestion(newQuestion.getText().toString(), answer.getText().toString());
+                        sendQuestion(newQuestion.getText().toString(), answer.getText().toString(), true, false);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -151,7 +166,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         d.show();
     }
 
-    private void sendQuestion(String text, String answer){
+    private void sendQuestion(String text, String answer, final boolean closeAfter, boolean isCompleted){
         text = URLEncoder.encode(text);
         answer = URLEncoder.encode(answer);
 
@@ -161,13 +176,17 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
                 text,
                 answer);
 
+        if(isCompleted)
+            url += "&is_completed=true";
+
         Log.e("ASDF", url);
         JsonObjectRequest newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (progressDialog != null && progressDialog.isShowing())
                     progressDialog.dismiss();
-                finish();
+                if(closeAfter)
+                    finish();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -185,15 +204,61 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        simpleFacebook = SimpleFacebook.getInstance();
-        fragment.setGame(game);
+    public void onGuess(final Answer answer) {
+
+        if(!myTurn){
+            Toast.makeText(this, "Wait your turn!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        final EditText e = new EditText(this);
+        e.setHint("Please respond to their question.");
+
+        AlertDialog d = new AlertDialog.Builder(this)
+                .setTitle("Do you want to guess " + answer.name + "?")
+                .setView(e)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        guessAnswer(answer, e.getText().toString());
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).create();
+
+        d.show();
     }
 
-    @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
+    private void guessAnswer(Answer answer, String response){
+        if(answer.fb_id.equals(otherAnswerId)){
+
+            new AlertDialog.Builder(this)
+                    .setTitle("You Win!")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                        }
+                    })
+                    .create().show();
+
+            sendQuestion("Is it " + answer.name + "?", response, false, true);
+        } else {
+            sendQuestion("Is it " + answer.name + "?", response, false, false);
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Wrong!")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                        }
+                    })
+                    .create().show();
+        }
     }
 
     @Override
@@ -209,31 +274,6 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
                 finish();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onGuess(final Answer answer) {
-
-        AlertDialog d = new AlertDialog.Builder(this)
-                .setTitle("Do you want to guess " + answer.name + "?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        guessAnswer(answer);
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                }).create();
-
-        d.show();
-    }
-
-    private void guessAnswer(Answer answer){
-
-
     }
 
     private class SpinAdapter extends ArrayAdapter<String> {

@@ -79,10 +79,11 @@ public class MainActivity extends FragmentActivity {
     protected void onResumeFragments() {
         super.onResumeFragments();
 
-        if(mSimpleFacebook.isLogin())
+        if(mSimpleFacebook.isLogin()){
             showFragment(AUTHORIZED, false);
-        else
+        } else {
             showFragment(UNAUTHORIZED, false);
+        }
     }
 
     @Override

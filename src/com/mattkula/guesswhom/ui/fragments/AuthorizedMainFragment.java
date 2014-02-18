@@ -13,9 +13,7 @@ import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import com.android.volley.*;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -169,7 +167,7 @@ public class AuthorizedMainFragment extends Fragment {
                 opponentId,
                 simpleFacebook.getAccessToken());
 
-        JsonObjectRequest newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
+        Request newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 updateProgressDialog(false, null);
@@ -186,7 +184,7 @@ public class AuthorizedMainFragment extends Fragment {
                 updateProgressDialog(false, null);
                 Log.e("ASDF", volleyError.toString());
             }
-        });
+        }).setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         ApplicationController.getInstance().getRequestQueue().add(newGameRequest);
     }
@@ -214,7 +212,7 @@ public class AuthorizedMainFragment extends Fragment {
         });
     }
 
-    private void getMyGames(){
+    public void getMyGames(){
         String url = String.format("%s%s?user_id=%s", Constants.BASE_URL, "games.json", PreferenceManager.getProfileId(getActivity()));
         updateProgressDialog(true, "Getting games");
 
@@ -230,7 +228,7 @@ public class AuthorizedMainFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-
+                updateProgressDialog(false, null);
             }
         });
 

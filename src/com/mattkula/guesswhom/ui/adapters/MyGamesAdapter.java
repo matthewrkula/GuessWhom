@@ -47,7 +47,14 @@ public class MyGamesAdapter extends BaseAdapter {
 
         TextView opponent = (TextView)v.findViewById(R.id.text_opponent);
 
-        opponent.setText(game.whose_turn.equals(PreferenceManager.getProfileId(c)) ? "Your turn" : PreferenceManager.getOpponentName(c, game.id) + "'s turn");
+        String s = "";
+        if(PreferenceManager.getProfileId(c).equals(game.whose_turn))
+            s = "Your turn.";
+        else {
+            s = PreferenceManager.getProfileId(c).equals(game.opponent_id) ? game.creator_name + "'s turn" : game.opponent_name + "'s turn.";
+        }
+
+        opponent.setText(s);
         ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.game_profile_picture);
         picture.setProfileId(game.opponent_id);
 

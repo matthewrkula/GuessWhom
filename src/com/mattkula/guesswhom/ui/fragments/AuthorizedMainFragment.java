@@ -43,6 +43,7 @@ public class AuthorizedMainFragment extends Fragment {
 
     Game[] games;
     ListView listMyGames;
+    boolean gamesLoaded = false;
 
     ProgressDialog progressDialog;
     Gson gson;
@@ -52,6 +53,7 @@ public class AuthorizedMainFragment extends Fragment {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             startGameActivity(games[i]);
         }
+
     };
 
     @Override
@@ -73,21 +75,28 @@ public class AuthorizedMainFragment extends Fragment {
             }
         });
 
+        profilePictureView.setProfileId(PreferenceManager.getProfileId(getActivity()));
+        welcomeText.setText("Welcome to Guess Whom, " + PreferenceManager.getFirstName(getActivity()) + ".");
+
         progressDialog = new ProgressDialog(getActivity());
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return v;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
         simpleFacebook = SimpleFacebook.getInstance(getActivity());
         if(PreferenceManager.isLoggedIn(getActivity())){
             welcomeText.setText("Welcome to Guess Whom, " + PreferenceManager.getFirstName(getActivity()) + ".");
             profilePictureView.setProfileId(PreferenceManager.getProfileId(getActivity()));
         }
-        makeMeRequest();
-        getMyGames();
-        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+
+        if(PreferenceManager.getProfileId(getActivity()).equals("-1"))
+            makeMeRequest();
+        else
+            getMyGames();
     }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -187,10 +196,11 @@ public class AuthorizedMainFragment extends Fragment {
 
             @Override
             public void onComplete(Profile profile) {
-                profilePictureView.setProfileId(profile.getId());
-                welcomeText.setText("Welcome to Guess Whom, " + profile.getFirstName() + ".");
                 PreferenceManager.setFirstName(getActivity(), profile.getFirstName());
                 PreferenceManager.setProfileId(getActivity(), profile.getId());
+                profilePictureView.setProfileId(PreferenceManager.getProfileId(getActivity()));
+                welcomeText.setText("Welcome to Guess Whom, " + PreferenceManager.getFirstName(getActivity()) + ".");
+                getMyGames();
             }
 
             @Override
@@ -215,6 +225,7 @@ public class AuthorizedMainFragment extends Fragment {
                 updateProgressDialog(false, null);
 
                 listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));
+                gamesLoaded = true;
             }
         }, new Response.ErrorListener() {
             @Override

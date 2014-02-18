@@ -30,8 +30,6 @@ public class MainActivity extends FragmentActivity {
     private final int AUTHORIZED = 1;
     Fragment[] fragments = new Fragment[2];
 
-    private boolean isResumed = false;
-
     SimpleFacebook mSimpleFacebook;
 
     @Override
@@ -89,14 +87,12 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        isResumed = true;
         mSimpleFacebook = SimpleFacebook.getInstance(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        isResumed = false;
     }
 
     @Override

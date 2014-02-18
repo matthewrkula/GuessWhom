@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -45,6 +46,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
 
     TextView replyText;
     TextView questionText;
+    TextView hideText;
     Button askButton;
     ProgressDialog progressDialog;
 
@@ -96,6 +98,23 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         askButton = (Button)findViewById(R.id.btn_ask);
         replyText = (TextView)findViewById(R.id.text_reply);
         questionText = (TextView)findViewById(R.id.text_question_text);
+        hideText = (TextView)findViewById(R.id.hide_view);
+
+        hideText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch(motionEvent.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        view.animate().alpha(0).start();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        view.animate().alpha(1).start();
+                        return true;
+                }
+                return false;
+            }
+        });
 
         if(myId.equals(game.whose_turn))
             itIsMyTurn();

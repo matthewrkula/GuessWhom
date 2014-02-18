@@ -15,6 +15,7 @@
                         android:layout_width="100dip"
                         android:layout_height="100dip"
                         android:layout_margin="8dip"
+                        android:layout_gravity="center_vertical"
                         android:background="#33ffffff">
 
             <com.facebook.widget.ProfilePictureView
@@ -35,6 +36,15 @@
                     android:text="test text"
                     android:textSize="10sp"
                     />
+
+            <TextView
+                    android:id="@+id/hide_view"
+                    android:layout_width="100dip"
+                    android:layout_height="100dip"
+                    android:background="#ff000000"
+                    android:text="Press to view your answer"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"/>
 
         </RelativeLayout>
 

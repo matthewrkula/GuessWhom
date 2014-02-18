@@ -3,6 +3,7 @@ package com.mattkula.guesswhom.data.models;
 import com.google.gson.annotations.Expose;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by matt on 2/9/14.
@@ -46,4 +47,8 @@ public class Game implements Serializable{
     public Answer[] answers;
     @Expose
     public int turn_count;
+    @Expose
+    public Date created_at;
+    @Expose
+    public Date updated_at;
 }

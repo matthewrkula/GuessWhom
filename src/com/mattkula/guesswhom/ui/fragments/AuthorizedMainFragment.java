@@ -3,39 +3,29 @@ package com.mattkula.guesswhom.ui.fragments;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.android.volley.*;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.facebook.widget.FriendPickerFragment;
 import com.facebook.widget.ProfilePictureView;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.GsonBuilder;
 import com.mattkula.guesswhom.ApplicationController;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.Constants;
 import com.mattkula.guesswhom.data.PreferenceManager;
-import com.mattkula.guesswhom.data.models.Answer;
 import com.mattkula.guesswhom.data.models.Game;
 import com.mattkula.guesswhom.ui.FriendPickerActivity;
 import com.mattkula.guesswhom.ui.GameActivity;
 import com.mattkula.guesswhom.ui.adapters.MyGamesAdapter;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.entities.Profile;
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -55,6 +45,7 @@ public class AuthorizedMainFragment extends Fragment {
     ListView listMyGames;
 
     ProgressDialog progressDialog;
+    Gson gson;
 
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
@@ -96,6 +87,7 @@ public class AuthorizedMainFragment extends Fragment {
         }
         makeMeRequest();
         getMyGames();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
     }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -172,7 +164,7 @@ public class AuthorizedMainFragment extends Fragment {
             public void onResponse(JSONObject response) {
                 updateProgressDialog(false, null);
 
-                Game game = new Gson().fromJson(response.toString(), Game.class);
+                Game game = gson.fromJson(response.toString(), Game.class);
                 if (game != null){
                     PreferenceManager.setOpponentName(getActivity(), game.id, opponentName);
                     startGameActivity(game);
@@ -219,7 +211,6 @@ public class AuthorizedMainFragment extends Fragment {
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                Gson gson = new Gson();
                 games = gson.fromJson(s, Game[].class);
                 updateProgressDialog(false, null);
 

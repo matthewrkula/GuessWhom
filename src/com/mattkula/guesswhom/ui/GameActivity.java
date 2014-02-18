@@ -27,6 +27,7 @@ import com.mattkula.guesswhom.data.models.Game;
 import com.mattkula.guesswhom.ui.fragments.GameBoardFragment;
 import com.sromku.simple.fb.SimpleFacebook;
 import org.json.JSONObject;
+import android.support.v7.appcompat.*;
 
 import java.net.URLEncoder;
 
@@ -61,7 +62,8 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         if(game == null)
             throw new IllegalStateException("No game sent to GameActivity");
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         progressDialog = new ProgressDialog(this);
 
         fragment = (GameBoardFragment)getSupportFragmentManager().findFragmentById(R.id.game_fragment);

@@ -46,10 +46,10 @@ public class AuthorizedMainFragment extends Fragment {
     Gson gson;
     SimpleFacebook simpleFacebook;
 
-    Game[] games;
-    boolean gamesLoaded = false;
-    String mFirstName;
     String mId;
+    Game[] games;
+    String mFirstName;
+    boolean gamesLoaded = false;
 
 
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
@@ -57,7 +57,6 @@ public class AuthorizedMainFragment extends Fragment {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             startGameActivity(games[i]);
         }
-
     };
 
     @Override

@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by matt on 2/9/14.
  */
-public class Game implements Serializable{
+public class Game implements Serializable {
 
     public Game(String id, String opponent_id, String last_question, String question, String response, String whose_turn, String creator_answer, String opponent_answer, Answer[] answers, int turn_count) {
         this.id = id;

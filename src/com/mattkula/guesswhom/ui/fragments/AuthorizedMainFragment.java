@@ -35,18 +35,20 @@ public class AuthorizedMainFragment extends Fragment {
 
     public static final int FRIEND_PICKER_CODE = 1;
 
-    TextView welcomeText;
-    ProfilePictureView profilePictureView;
     Button newGameButton;
+    TextView welcomeText;
+    ListView listMyGames;
+    ProgressDialog progressDialog;
+    ProfilePictureView profilePictureView;
 
+    Gson gson;
     SimpleFacebook simpleFacebook;
 
     Game[] games;
-    ListView listMyGames;
     boolean gamesLoaded = false;
+    String mFirstName;
+    String mId;
 
-    ProgressDialog progressDialog;
-    Gson gson;
 
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
@@ -75,9 +77,6 @@ public class AuthorizedMainFragment extends Fragment {
             }
         });
 
-        profilePictureView.setProfileId(PreferenceManager.getProfileId(getActivity()));
-        welcomeText.setText("Welcome to Guess Whom, " + PreferenceManager.getFirstName(getActivity()) + ".");
-
         progressDialog = new ProgressDialog(getActivity());
         gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return v;
@@ -86,18 +85,19 @@ public class AuthorizedMainFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         simpleFacebook = SimpleFacebook.getInstance(getActivity());
-        if(PreferenceManager.isLoggedIn(getActivity())){
-            welcomeText.setText("Welcome to Guess Whom, " + PreferenceManager.getFirstName(getActivity()) + ".");
-            profilePictureView.setProfileId(PreferenceManager.getProfileId(getActivity()));
-        }
 
         if(PreferenceManager.getProfileId(getActivity()).equals("-1"))
             makeMeRequest();
-        else
+        else {
+            mFirstName = PreferenceManager.getFirstName(getActivity());
+            mId = PreferenceManager.getProfileId(getActivity());
             getMyGames();
+            profilePictureView.setProfileId(mId);
+            welcomeText.setText("Welcome to Guess Whom, " + mFirstName + ".");
+        }
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -183,7 +183,6 @@ public class AuthorizedMainFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 updateProgressDialog(false, null);
-                Log.e("ASDF", volleyError.toString());
             }
         }).setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
@@ -191,6 +190,7 @@ public class AuthorizedMainFragment extends Fragment {
     }
 
     private void makeMeRequest(){
+        welcomeText.setVisibility(View.INVISIBLE);
 
         simpleFacebook.getProfile(new SimpleFacebook.OnProfileRequestListener() {
 
@@ -198,8 +198,11 @@ public class AuthorizedMainFragment extends Fragment {
             public void onComplete(Profile profile) {
                 PreferenceManager.setFirstName(getActivity(), profile.getFirstName());
                 PreferenceManager.setProfileId(getActivity(), profile.getId());
-                profilePictureView.setProfileId(PreferenceManager.getProfileId(getActivity()));
-                welcomeText.setText("Welcome to Guess Whom, " + PreferenceManager.getFirstName(getActivity()) + ".");
+                mFirstName = profile.getFirstName();
+                mId = profile.getId();
+                profilePictureView.setProfileId(mId);
+                welcomeText.setText("Welcome to Guess Whom, " + mFirstName + ".");
+                welcomeText.setVisibility(View.VISIBLE);
                 getMyGames();
             }
 
@@ -215,8 +218,9 @@ public class AuthorizedMainFragment extends Fragment {
     }
 
     public void getMyGames(){
-        String url = String.format("%s%s?user_id=%s", Constants.BASE_URL, "games.json", PreferenceManager.getProfileId(getActivity()));
+        String url = String.format("%s%s?user_id=%s", Constants.BASE_URL, "games.json", mId);
         updateProgressDialog(true, "Getting games");
+        Log.e("ASDF", url);
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override

@@ -42,7 +42,7 @@
                     android:layout_width="100dip"
                     android:layout_height="100dip"
                     android:background="#ff000000"
-                    android:text="Press to view your answer"
+                    android:text="Press to view your secret friend"
                     android:gravity="center"
                     android:textColor="@android:color/white"/>
 

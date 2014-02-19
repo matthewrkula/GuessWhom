@@ -2,6 +2,7 @@ package com.mattkula.guesswhom.ui.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.data.models.Answer;
 import com.mattkula.guesswhom.data.models.Game;
+import com.mattkula.guesswhom.ui.ConfirmGuessActivity;
 import com.squareup.picasso.Picasso;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.entities.Profile;
@@ -122,8 +124,6 @@ public class GameBoardFragment extends Fragment {
                 public void onSpringUpdate(Spring spring) {
                     float value = (float) spring.getCurrentValue();
                     float scale = 1f - (value * 0.5f);
-//                    returnView.setScaleX(scale);
-//                    returnView.setScaleY(scale);
                     iv.setScaleX(scale);
                     iv.setScaleY(scale);
                 }
@@ -177,7 +177,21 @@ public class GameBoardFragment extends Fragment {
             returnView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    listener.onGuess(friend);
+//                    listener.onGuess(friend);
+
+                    int[] location = new int[2];
+                    view.getLocationOnScreen(location);
+
+                    Intent i = new Intent(getActivity(), ConfirmGuessActivity.class);
+                    i.putExtra("left", location[0]);
+                    i.putExtra("top", location[1]);
+                    i.putExtra("width", view.getWidth());
+                    i.putExtra("height", view.getHeight());
+                    i.putExtra(ConfirmGuessActivity.EXTRA_URL, String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", friend.fb_id, 200, 200));
+                    i.putExtra(ConfirmGuessActivity.EXTRA_NAME, friend.name);
+                    startActivity(i);
+                    getActivity().overridePendingTransition(0, 0);
+
                     return false;
                 }
             });

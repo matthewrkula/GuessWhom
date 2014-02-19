@@ -104,8 +104,9 @@ public class GameBoardFragment extends Fragment {
             final Answer friend = (Answer)getItem(i);
             returnView.setLayoutParams(new AbsListView.LayoutParams(mImageWidth, mImageWidth));
 
-            ImageView iv = (ImageView)returnView.findViewById(R.id.image_profile_picasso);
+            final ImageView iv = (ImageView)returnView.findViewById(R.id.image_profile_picasso);
             iv.setLayoutParams(new RelativeLayout.LayoutParams(mImageWidth, mImageWidth));
+
             Picasso.with(getActivity())
                     .load(String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", friend.fb_id, mImageWidth, mImageWidth))
                     .into(iv);
@@ -121,8 +122,10 @@ public class GameBoardFragment extends Fragment {
                 public void onSpringUpdate(Spring spring) {
                     float value = (float) spring.getCurrentValue();
                     float scale = 1f - (value * 0.5f);
-                    returnView.setScaleX(scale);
-                    returnView.setScaleY(scale);
+//                    returnView.setScaleX(scale);
+//                    returnView.setScaleY(scale);
+                    iv.setScaleX(scale);
+                    iv.setScaleY(scale);
                 }
 
                 @Override

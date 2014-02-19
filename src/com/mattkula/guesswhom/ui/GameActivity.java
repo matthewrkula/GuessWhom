@@ -62,6 +62,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
             throw new IllegalStateException("No game sent to GameActivity");
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().hide();
 
         progressDialog = new ProgressDialog(this);
 

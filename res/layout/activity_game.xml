@@ -5,6 +5,13 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <fragment
+            android:id="@+id/game_fragment"
+            android:name="com.mattkula.guesswhom.ui.fragments.GameBoardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +48,7 @@
                     android:id="@+id/hide_view"
                     android:layout_width="100dip"
                     android:layout_height="100dip"
-                    android:background="#ff000000"
+                    android:background="#ffca4f0e"
                     android:text="Press to view your secret friend"
                     android:gravity="center"
                     android:textColor="@android:color/white"/>
@@ -85,10 +92,4 @@
         </LinearLayout>
     </LinearLayout>
 
-    <fragment
-            android:id="@+id/game_fragment"
-            android:name="com.mattkula.guesswhom.ui.fragments.GameBoardFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
 </LinearLayout>

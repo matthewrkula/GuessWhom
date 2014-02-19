@@ -3,9 +3,15 @@
     <style name="AppTheme" parent="android:Theme.Holo.Light">
         <!--<item name="android:actionBarStyle">@style/AppTheme.ActionBarStyle</item>-->
     </style>
-    
-    <style name="AppTheme.ActionBarStyle" parent="android:Widget.Holo.Light.ActionBar">
-        <item name="android:background">#ffff0000</item>
-        <item name="android:textColor">#ffffffff</item>
+
+    <style name="CustomActionBarTheme"
+           parent="android:Theme.Holo.Light">
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:actionBarStyle">@style/ActionBarStyle</item>
+    </style>
+
+    <style name="ActionBarStyle" parent="android:Widget.Holo.Light.ActionBar">
+        <!--<item name="android:windowActionBarOverlay">true</item>-->
+        <item name="android:background">#55888888</item>
     </style>
 </resources>

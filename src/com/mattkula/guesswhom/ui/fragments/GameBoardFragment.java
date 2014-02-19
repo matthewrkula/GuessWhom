@@ -19,6 +19,7 @@ import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.data.models.Answer;
 import com.mattkula.guesswhom.data.models.Game;
+import com.squareup.picasso.Picasso;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.entities.Profile;
 
@@ -103,10 +104,11 @@ public class GameBoardFragment extends Fragment {
             final Answer friend = (Answer)getItem(i);
             returnView.setLayoutParams(new AbsListView.LayoutParams(mImageWidth, mImageWidth));
 
-            ProfilePictureView pictureView = (ProfilePictureView)returnView.findViewById(R.id.image_profile_picture);
-            pictureView.setLayoutParams(new RelativeLayout.LayoutParams(mImageWidth, mImageWidth));
-            pictureView.setPresetSize(ProfilePictureView.CUSTOM);
-            pictureView.setProfileId(friend.fb_id);
+            ImageView iv = (ImageView)returnView.findViewById(R.id.image_profile_picasso);
+            iv.setLayoutParams(new RelativeLayout.LayoutParams(mImageWidth, mImageWidth));
+            Picasso.with(getActivity())
+                    .load(String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", friend.fb_id, mImageWidth, mImageWidth))
+                    .into(iv);
 
             TextView nameView = (TextView)returnView.findViewById(R.id.text_profile_name);
             nameView.setText(friend.name);

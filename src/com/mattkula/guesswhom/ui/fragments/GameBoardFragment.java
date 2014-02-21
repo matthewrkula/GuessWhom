@@ -3,9 +3,14 @@ package com.mattkula.guesswhom.ui.fragments;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -73,6 +78,7 @@ public class GameBoardFragment extends Fragment {
         simpleFacebook = SimpleFacebook.getInstance(getActivity());
     }
 
+
     public void setGame(Game game) {
         this.game = game;
         fadedMap = PreferenceManager.getFadedMap(getActivity(), game.id);
@@ -111,6 +117,7 @@ public class GameBoardFragment extends Fragment {
 
             Picasso.with(getActivity())
                     .load(String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", friend.fb_id, mImageWidth, mImageWidth))
+                    .placeholder(R.drawable.default_user)
                     .into(iv);
 
             TextView nameView = (TextView)returnView.findViewById(R.id.text_profile_name);
@@ -177,20 +184,7 @@ public class GameBoardFragment extends Fragment {
             returnView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-//                    listener.onGuess(friend);
-
-                    int[] location = new int[2];
-                    view.getLocationOnScreen(location);
-
-                    Intent i = new Intent(getActivity(), ConfirmGuessActivity.class);
-                    i.putExtra("left", location[0]);
-                    i.putExtra("top", location[1]);
-                    i.putExtra("width", view.getWidth());
-                    i.putExtra("height", view.getHeight());
-                    i.putExtra(ConfirmGuessActivity.EXTRA_URL, String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", friend.fb_id, 200, 200));
-                    i.putExtra(ConfirmGuessActivity.EXTRA_NAME, friend.name);
-                    startActivity(i);
-                    getActivity().overridePendingTransition(0, 0);
+                    listener.onGuess(friend);
 
                     return false;
                 }

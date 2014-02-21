@@ -5,20 +5,27 @@
               android:layout_height="match_parent"
               android:background="#77000000">
 
+    <EditText
+            android:id="@+id/edit_confirm_question_answer"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/image_confirm_profile"
+            android:layout_centerHorizontal="true"
+            android:hint="Answer opponent's question"
+            android:textColorHint="#ffdadada"
+            android:textColor="@android:color/white"
+            android:alpha="0"/>
+
     <ImageView
             android:id="@+id/image_confirm_profile"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_centerInParent="true"
             android:src="@drawable/icon"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             />
 
-    <EditText
-            android:id="@+id/edit_confirm_question_answer"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/image_confirm_profile"
-            android:visibility="invisible"/>
 
     <TextView android:layout_width="250dp" android:layout_height="wrap_content"
             android:id="@+id/text_confirm_name"

@@ -169,23 +169,29 @@ public class AuthorizedMainFragment extends Fragment {
                 opponentId,
                 simpleFacebook.getAccessToken());
 
+        Log.e("ASDF", "New game url: " + url);
+
         Request newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 updateProgressDialog(false, null);
 
                 Game game = gson.fromJson(response.toString(), Game.class);
+                Arrays.sort(game.answers);
                 if (game != null){
                     PreferenceManager.setOpponentName(getActivity(), game.id, opponentName);
                     startGameActivity(game);
                 }
             }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                Log.e("ASDF", volleyError.toString());
+                Toast.makeText(getActivity(), "Error starting game", Toast.LENGTH_LONG).show();
                 updateProgressDialog(false, null);
             }
-        }).setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        }).setRetryPolicy(new DefaultRetryPolicy(10000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         ApplicationController.getInstance().getRequestQueue().add(newGameRequest);
     }
@@ -231,6 +237,10 @@ public class AuthorizedMainFragment extends Fragment {
             public void onResponse(String s) {
                 games = gson.fromJson(s, Game[].class);
                 Arrays.sort(games);
+
+                for(Game game : games){
+                    Arrays.sort(game.answers);
+                }
                 updateProgressDialog(false, null);
 
                 listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));

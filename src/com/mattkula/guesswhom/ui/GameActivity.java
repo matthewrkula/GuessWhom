@@ -69,13 +69,13 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         fragment = (GameBoardFragment)getSupportFragmentManager().findFragmentById(R.id.game_fragment);
 
         setUpHeader();
+        fragment.setGame(game);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         simpleFacebook = SimpleFacebook.getInstance();
-        fragment.setGame(game);
     }
 
     private void setUpHeader(){
@@ -226,64 +226,25 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
             return;
         }
 
-        final EditText e = new EditText(this);
-        e.setHint("Please respond to their question.");
-
-        AlertDialog d = new AlertDialog.Builder(this)
-                .setTitle("Do you want to guess " + answer.name + "?")
-                .setView(e)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if(e.getText().toString() == null || e.getText().toString().equals("")){
-                            Toast.makeText(GameActivity.this, "Repond to their question before sending!", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        guessAnswer(answer, e.getText().toString());
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        dialogInterface.dismiss();
-                    }
-                }).create();
-
-        d.show();
-    }
-
-    private void guessAnswer(Answer answer, String response){
-        if(answer.fb_id.equals(otherAnswerId)){
-
-            new AlertDialog.Builder(this)
-                    .setTitle("You Win!")
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                        }
-                    })
-                    .create().show();
-
-            sendQuestion("Is it " + answer.name + "?", response, false, true);
-        } else {
-            sendQuestion("Is it " + answer.name + "?", response, false, false);
-
-            new AlertDialog.Builder(this)
-                    .setTitle("Wrong!")
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                        }
-                    })
-                    .create().show();
-        }
+        Intent i = new Intent(this, ConfirmGuessActivity.class);
+        i.putExtra(ConfirmGuessActivity.EXTRA_URL, String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", answer.fb_id, 200, 200));
+        i.putExtra(ConfirmGuessActivity.EXTRA_ANSWER, answer);
+        i.putExtra(ConfirmGuessActivity.EXTRA_GAME, game);
+        i.putExtra(ConfirmGuessActivity.EXTRA_CORRECT, answer.fb_id.equals(otherAnswerId));
+        startActivityForResult(i, 23);
+        this.overridePendingTransition(0, 0);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         simpleFacebook.onActivityResult(this, requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 23){
+            if(resultCode == RESULT_OK){
+                finish();
+            }
+        }
     }
 
     @Override

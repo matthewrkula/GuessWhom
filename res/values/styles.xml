@@ -11,7 +11,7 @@
         <item name="android:background">#55888888</item>
     </style>
 
-    <style name="Transparent">
+    <style name="Transparent" parent="android:Theme.Holo.Light">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <fragment
+            android:id="@+id/game_fragment"
+            android:name="com.mattkula.guesswhom.ui.fragments.GameBoardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#ff2c3e50">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="150dip"
+                        android:layout_height="150dip"
+                        android:layout_margin="8dip"
+                        android:layout_gravity="center_vertical"
+                        android:background="#33ffffff">
+
+            <com.facebook.widget.ProfilePictureView
+                    android:id="@+id/image_my_answer"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"/>
+
+            <TextView
+                    android:id="@+id/text_my_answer_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dip"
+                    android:background="#88000000"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="test text"
+                    android:textSize="10sp"
+                    />
+
+            <TextView
+                    android:id="@+id/hide_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffca4f0e"
+                    android:text="Press to view your secret friend"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="8dip">
+
+            <TextView
+                    android:id="@+id/text_reply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#ffff"
+                    android:layout_marginLeft="8dip"
+                    />
+
+            <TextView
+                    android:id="@+id/text_question_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#ffff"
+                    android:layout_marginLeft="8dip"
+                    />
+
+            <Button
+                    android:id="@+id/btn_ask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dip"
+                    android:layout_margin="8dip"
+                    android:text="REPLY"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/com_facebook_button_blue"
+                    android:textColor="@android:color/white"
+                    />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -5,7 +5,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:padding="2dp"
-              android:background="#ff2c3e50"
+              android:background="@color/game_background_blue"
         >
 
     <ImageView
@@ -18,14 +18,13 @@
     <TextView
             android:id="@+id/text_profile_name"
             android:layout_width="match_parent"
-            android:layout_height="15dip"
+            android:layout_height="20dip"
             android:background="@drawable/black_gradient"
             android:textColor="@android:color/white"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp"
-            android:gravity="center"
+            android:gravity="center_horizontal|top"
             android:text="test text"
-            android:textSize="10sp"
+            android:textSize="14sp"
             />
 
 </RelativeLayout>

@@ -90,6 +90,7 @@ public class ConfirmGuessActivity extends Activity {
 
         Picasso.with(this)
                 .load(url)
+                .placeholder(R.drawable.default_user)
                 .into(profilePicture);
 
         confirmNameText.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {

@@ -24,6 +24,7 @@ import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.data.models.Answer;
 import com.mattkula.guesswhom.data.models.Game;
 import com.mattkula.guesswhom.ui.fragments.GameBoardFragment;
+import com.squareup.picasso.Picasso;
 import com.sromku.simple.fb.SimpleFacebook;
 import org.json.JSONObject;
 
@@ -88,7 +89,13 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
             otherAnswerId = game.opponent_answer;
         }
 
-        ((ProfilePictureView)findViewById(R.id.image_my_answer)).setProfileId(myAnswerId);
+        ImageView iv = (ImageView)findViewById(R.id.image_my_answer);
+
+        Picasso.with(this)
+                .load(String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", myAnswerId, iv.getWidth(), iv.getHeight()))
+                .placeholder(R.drawable.default_user)
+                .into(iv);
+
         for(int i=0; i < game.answers.length; i++)
             if(game.answers[i].fb_id.equals(myAnswerId))
                 ((TextView)findViewById(R.id.text_my_answer_name)).setText(game.answers[i].name);
@@ -254,32 +261,5 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
                 finish();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private class SpinAdapter extends ArrayAdapter<String> {
-        public SpinAdapter(Context context, int textViewResourceId, String[] objects) {
-            super(context, textViewResourceId, objects);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            TextView tv = new TextView(getApplicationContext());
-            tv.setText(getItem(position));
-            tv.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 50));
-            tv.setTextSize(20);
-            tv.setTextColor(0xff000000);
-            return tv;
-        }
-
-        @Override
-        public View getDropDownView(int position, View convertView, ViewGroup parent) {
-            TextView tv = new TextView(getApplicationContext());
-            tv.setText(getItem(position));
-            tv.setLayoutParams(new AbsListView.LayoutParams(150, 100));
-            tv.setTextSize(20);
-            tv.setTextColor(0xff000000);
-            tv.setPadding(20, 20, 0, 0);
-            return tv;
-        }
     }
 }

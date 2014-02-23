@@ -35,6 +35,10 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
+            android:shadowColor="#f000"
+            android:shadowDx="10"
+            android:shadowDy="10"
+            android:shadowRadius="10"
             />
 
     <Button

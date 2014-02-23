@@ -120,7 +120,7 @@ public class GameBoardFragment extends Fragment {
                     .placeholder(R.drawable.default_user)
                     .into(iv);
 
-            TextView nameView = (TextView)returnView.findViewById(R.id.text_profile_name);
+            final TextView nameView = (TextView)returnView.findViewById(R.id.text_profile_name);
             nameView.setText(friend.name);
 
             final Spring spring = springSystem.createSpring();
@@ -151,49 +151,17 @@ public class GameBoardFragment extends Fragment {
                 }
             });
 
-            returnView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View view, MotionEvent motionEvent) {
-                    switch(motionEvent.getAction()){
-                        case MotionEvent.ACTION_DOWN:
-                            spring.setEndValue(1);
-                            break;
-                        case MotionEvent.ACTION_CANCEL:
-                            spring.setEndValue(0);
-                            break;
-                        case MotionEvent.ACTION_UP:
-                            spring.setEndValue(0);
+            AnswerTouchHandler handler = new AnswerTouchHandler(friend, spring, iv, nameView, pos);
 
-                            if(isFaded(pos))
-                                view.animate().alpha(1).start();
-                            else
-                                view.animate().alpha(0.3f).start();
-                            swapBit(pos);
-                    }
-                    return false;
-                }
-            });
-
-            returnView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-
-            returnView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    listener.onGuess(friend);
-
-                    return false;
-                }
-            });
+            returnView.setOnTouchListener(handler);
+            returnView.setOnLongClickListener(handler);
 
             returnView.setTag(spring);
 
-            if(isFaded(i))
-                returnView.setAlpha(0.3f);
+            if(isFaded(i)){
+                iv.setAlpha(0.2f);
+                nameView.setAlpha(0.4f);
+            }
 
             return returnView;
         }
@@ -223,5 +191,58 @@ public class GameBoardFragment extends Fragment {
 
     public interface OnGuessListener {
         public void onGuess(Answer answer);
+    }
+
+    public class AnswerTouchHandler implements View.OnTouchListener, View.OnLongClickListener{
+
+        Answer answer;
+        Spring spring;
+        ImageView iv;
+        TextView tv;
+        int position;
+
+        boolean didLongPress = false;
+
+        public AnswerTouchHandler(Answer answer, Spring spring, ImageView iv, TextView tv, int position){
+            this.answer = answer;
+            this.spring = spring;
+            this.iv = iv;
+            this.tv = tv;
+            this.position = position;
+        }
+
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    didLongPress = false;
+                    spring.setEndValue(1);
+                    break;
+                case MotionEvent.ACTION_CANCEL:
+                    spring.setEndValue(0);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    spring.setEndValue(0);
+
+                    if(!didLongPress){
+                        if (isFaded(position)) {
+                            iv.animate().alpha(1).start();
+                            tv.animate().alpha(1).start();
+                        } else {
+                            iv.animate().alpha(0.2f).start();
+                            tv.animate().alpha(0.4f).start();
+                        }
+                        swapBit(position);
+                    }
+            }
+            return false;
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            didLongPress = true;
+            listener.onGuess(answer);
+            return false;
+        }
     }
 }

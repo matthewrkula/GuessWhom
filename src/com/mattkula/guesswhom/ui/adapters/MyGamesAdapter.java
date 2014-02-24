@@ -68,6 +68,8 @@ public class MyGamesAdapter extends BaseAdapter {
 
         picture.setProfileId(game.opponent_id.equals(PreferenceManager.getProfileId(c)) ? game.creator_id : game.opponent_id);
 
+        if(i % 2 == 0)
+            v.setBackgroundColor(0x33ffffff);
         return v;
     }
 }

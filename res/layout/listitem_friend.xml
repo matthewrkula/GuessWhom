@@ -6,7 +6,7 @@
               android:layout_height="wrap_content">
 
     <com.facebook.widget.ProfilePictureView
-            android:id="@+id/game_profile_picture"
+            android:id="@+id/friend_profile_picture"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginLeft="16dp"
@@ -19,26 +19,13 @@
             android:layout_height="48dp">
 
         <com.mattkula.guesswhom.ui.CustomTextView
-                android:id="@+id/text_opponent"
+                android:id="@+id/text_friend_name"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="3"
                 android:layout_marginLeft="16dp"
-                android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:gravity="center_vertical"
-                />
-
-        <com.mattkula.guesswhom.ui.CustomTextView
-                android:id="@+id/text_time_last_update"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:layout_marginTop="-2dp"
-                android:layout_marginLeft="16dp"
-                android:textColor="@color/clouds"
-                android:textSize="12sp"
-                android:gravity="top"
                 />
 
     </LinearLayout>

@@ -1,12 +1,18 @@
 package com.mattkula.guesswhom.ui;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.ui.fragments.AuthorizedMainFragment;
@@ -30,6 +36,11 @@ public class MainActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        int titleId = getResources().getIdentifier("action_bar_title", "id",
+                "android");
+        TextView yourTextView = (TextView) findViewById(titleId);
+        yourTextView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Raleway-Bold.ttf"));
 
         // Set up SimpleFacebookConfiguration
         Permissions[] permissions = new Permissions[]{

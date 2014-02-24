@@ -30,6 +30,8 @@ public class Game implements Serializable, Comparable<Game> {
     @Expose
     public String opponent_name;
     @Expose
+    public String creator_id;
+    @Expose
     public String creator_name;
     @Expose
     public String lastquestion;

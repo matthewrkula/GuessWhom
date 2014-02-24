@@ -5,7 +5,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:padding="2dp"
-              android:background="@color/game_background_blue"
+              android:background="#0000"
         >
 
     <ImageView
@@ -15,7 +15,7 @@
             android:layout_centerHorizontal="true"
             />
 
-    <TextView
+    <com.mattkula.guesswhom.ui.CustomTextView
             android:id="@+id/text_profile_name"
             android:layout_width="match_parent"
             android:layout_height="20dip"

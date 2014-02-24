@@ -3,7 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@drawable/gradient_blue">
 
     <fragment
             android:id="@+id/game_fragment"
@@ -16,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/game_background_blue">
+            android:background="@android:color/transparent">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="100dip"
@@ -32,7 +33,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"/>
 
-            <TextView
+            <com.mattkula.guesswhom.ui.CustomTextView
                     android:id="@+id/text_my_answer_name"
                     android:layout_width="match_parent"
                     android:layout_height="15dip"
@@ -44,7 +45,7 @@
                     android:textSize="10sp"
                     />
 
-            <TextView
+            <com.mattkula.guesswhom.ui.CustomTextView
                     android:id="@+id/hide_view"
                     android:layout_width="100dip"
                     android:layout_height="100dip"
@@ -61,7 +62,7 @@
                 android:orientation="vertical"
                 android:paddingTop="8dip">
 
-            <TextView
+            <com.mattkula.guesswhom.ui.CustomTextView
                     android:id="@+id/text_reply"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +71,7 @@
                     android:layout_marginLeft="8dip"
                     />
 
-            <TextView
+            <com.mattkula.guesswhom.ui.CustomTextView
                     android:id="@+id/text_question_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

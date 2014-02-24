@@ -6,11 +6,12 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView
+    <com.mattkula.guesswhom.ui.CustomTextView
             android:id="@+id/text_welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/midnight_blue"
             />
 
     <com.facebook.widget.ProfilePictureView
@@ -35,7 +36,7 @@
             android:background="@drawable/com_facebook_button_blue"
             />
 
-    <TextView
+    <com.mattkula.guesswhom.ui.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/games_in_progress"
@@ -43,6 +44,8 @@
             android:layout_marginTop="16dip"
             android:focusable="false"
             android:clickable="false"
+            android:textColor="@color/midnight_blue"
+            android:layout_marginBottom="5dp"
             />
 
     <ListView

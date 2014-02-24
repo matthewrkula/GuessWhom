@@ -92,7 +92,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         ImageView iv = (ImageView)findViewById(R.id.image_my_answer);
 
         Picasso.with(this)
-                .load(String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", myAnswerId, iv.getWidth(), iv.getHeight()))
+                .load(String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", myAnswerId, 200, 200))
                 .placeholder(R.drawable.default_user)
                 .into(iv);
 

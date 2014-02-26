@@ -12,6 +12,8 @@ lt application files
 bin/
 gen/
 
+.idea/workspace.xml
+
 # Gradle files
 .gradle/
 build/

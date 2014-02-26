@@ -131,11 +131,6 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
             }
         });
 
-        if(myId.equals(game.whose_turn))
-            itIsMyTurn();
-        else
-            itIsTheirTurn();
-
         ViewGroup parent = (ViewGroup)askButton.getParent();
         if(game.turn_count == 0){
             for(int i=0; i < parent.getChildCount(); i++){
@@ -154,6 +149,12 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
             questionText.setVisibility(View.VISIBLE);
             questionWho.setVisibility(View.VISIBLE);
         }
+
+        if(myId.equals(game.whose_turn))
+            itIsMyTurn();
+        else
+            itIsTheirTurn();
+
     }
 
     private void itIsTheirTurn(){

@@ -50,11 +50,11 @@
                     android:id="@+id/hide_view"
                     android:layout_width="100dip"
                     android:layout_height="100dip"
-                    android:background="#ffca4f0e"
+                    android:background="@drawable/bg_button"
                     android:text="Press to view your secret friend"
                     android:gravity="center"
                     android:shadowRadius="2"
-                    android:shadowColor="#8000"
+                    android:shadowColor="#5000"
                     android:shadowDy="2"
                     android:shadowDx="0"
                     android:textColor="@android:color/white"/>

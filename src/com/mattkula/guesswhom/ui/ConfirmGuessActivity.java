@@ -18,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.mattkula.guesswhom.ApplicationController;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.Constants;
+import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.data.models.Answer;
 import com.mattkula.guesswhom.data.models.Game;
 import com.squareup.picasso.Picasso;
@@ -146,7 +147,7 @@ public class ConfirmGuessActivity extends Activity {
                 answer);
 
         if(isCompleted)
-            url += "&is_completed=true";
+            url += String.format("&winner=%s", PreferenceManager.getProfileId(this));
 
         Log.e("ASDF", url);
         JsonObjectRequest newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {

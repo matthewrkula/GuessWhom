@@ -6,6 +6,8 @@
               android:layout_height="match_parent">
 
     <com.facebook.widget.ProfilePictureView
+            android:padding="2dp"
+            android:background="#ffff"
             android:id="@+id/facebook_profile_picture"
             android:layout_width="125dp"
             android:layout_height="125dp"
@@ -27,6 +29,7 @@
             />
 
     <com.mattkula.guesswhom.ui.CustomTextView
+            android:id="@+id/text_games_in_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/games_in_progress"
@@ -37,13 +40,16 @@
             android:clickable="false"
             android:textColor="@color/clouds"
             android:layout_marginBottom="5dp"
+            android:shadowColor="#5000"
+            android:shadowRadius="2"
+            android:shadowDy="2"
+            android:shadowDx="0"
             />
 
     <ListView
             android:id="@+id/list_my_games"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-
             />
 
 </LinearLayout>

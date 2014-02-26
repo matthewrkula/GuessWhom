@@ -10,6 +10,7 @@ import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.data.models.Game;
+import com.mattkula.guesswhom.ui.CustomTextView;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import java.util.Date;
@@ -51,18 +52,22 @@ public class MyGamesAdapter extends BaseAdapter {
         if(v == null)
             v = View.inflate(c, R.layout.listitem_games, null);
 
-        TextView opponent = (TextView)v.findViewById(R.id.text_opponent);
-        TextView time = (TextView)v.findViewById(R.id.text_time_last_update);
+        CustomTextView textWhoseTurn = (CustomTextView)v.findViewById(R.id.text_whose_turn);
+        TextView textTime = (TextView)v.findViewById(R.id.text_time_last_update);
 
         String s = "";
-        if(PreferenceManager.getProfileId(c).equals(game.whose_turn))
+
+        if(!game.winner.equals("0"))
+            s = PreferenceManager.getProfileId(c).equals(game.winner) ? "You won!" : game.opponent_name + " won!";
+        else if(PreferenceManager.getProfileId(c).equals(game.whose_turn))
             s = "Your turn.";
         else
             s = PreferenceManager.getProfileId(c).equals(game.opponent_id) ? game.creator_name + "'s turn" : game.opponent_name + "'s turn.";
 
 
-        opponent.setText(s);
-        time.setText(prettyTime.format(game.updated_at));
+        textWhoseTurn.setText(s);
+        textWhoseTurn.setBold(true);
+        textTime.setText(prettyTime.format(game.updated_at));
         ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.game_profile_picture);
 
 

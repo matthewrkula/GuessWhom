@@ -53,6 +53,8 @@ public class Game implements Serializable, Comparable<Game> {
     public Date created_at;
     @Expose
     public Date updated_at;
+    @Expose
+    public String winner;
 
     @Override
     public int compareTo(Game game) {

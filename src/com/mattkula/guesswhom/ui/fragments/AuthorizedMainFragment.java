@@ -40,6 +40,7 @@ public class AuthorizedMainFragment extends Fragment {
 
     Button newGameButton;
     ListView listMyGames;
+    TextView textGamesInProgress;
     ProgressDialog progressDialog;
     ProfilePictureView profilePictureView;
 
@@ -59,6 +60,14 @@ public class AuthorizedMainFragment extends Fragment {
         }
     };
 
+    AdapterView.OnItemLongClickListener listenerLong = new AdapterView.OnItemLongClickListener(){
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            deleteGame(games[i]);
+            return true;
+        }
+    };
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -67,6 +76,8 @@ public class AuthorizedMainFragment extends Fragment {
         profilePictureView = (ProfilePictureView)v.findViewById(R.id.facebook_profile_picture);
         listMyGames = (ListView)v.findViewById(R.id.list_my_games);
         listMyGames.setOnItemClickListener(listener);
+        listMyGames.setOnItemLongClickListener(listenerLong);
+        textGamesInProgress = (TextView)v.findViewById(R.id.text_games_in_progress);
 
         newGameButton = (Button)v.findViewById(R.id.btn_new_game);
         newGameButton.setOnClickListener(new View.OnClickListener() {
@@ -233,11 +244,12 @@ public class AuthorizedMainFragment extends Fragment {
                 games = gson.fromJson(s, Game[].class);
                 Arrays.sort(games);
 
+                textGamesInProgress.setText(games.length == 0 ? "No Games at the Moment!" : "Games in Progress:");
+
                 for(Game game : games){
                     Arrays.sort(game.answers);
                 }
                 updateProgressDialog(false, null);
-
                 listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));
                 gamesLoaded = true;
             }
@@ -249,6 +261,27 @@ public class AuthorizedMainFragment extends Fragment {
         });
 
         ApplicationController.getInstance().getRequestQueue().add(request);
+    }
+
+    private void deleteGame(Game game){
+
+        AlertDialog d = new AlertDialog.Builder(getActivity())
+                .setTitle("Delete game?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+                .create();
+
+        d.show();
     }
 
     // true = show, false hide, title can be null

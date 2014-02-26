@@ -12,15 +12,18 @@
             android:layout_height="48dp"
             android:layout_marginLeft="16dp"
             android:layout_gravity="center_vertical"
+            android:padding="1dp"
+            android:background="#ffff"
             />
 
     <LinearLayout
             android:orientation="vertical"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="48dp">
 
         <com.mattkula.guesswhom.ui.CustomTextView
-                android:id="@+id/text_opponent"
+                android:id="@+id/text_whose_turn"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="3"
@@ -40,6 +43,10 @@
                 android:textColor="@color/clouds"
                 android:textSize="12sp"
                 android:gravity="top"
+                android:shadowColor="#5000"
+                android:shadowRadius="2"
+                android:shadowDy="1"
+                android:shadowDx="0"
                 />
 
     </LinearLayout>

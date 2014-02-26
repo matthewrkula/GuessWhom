@@ -70,6 +70,9 @@ public class MyGamesAdapter extends BaseAdapter {
 
         if(i % 2 == 0)
             v.setBackgroundColor(0x33ffffff);
+        else
+            v.setBackgroundColor(0x00ffffff);
+
         return v;
     }
 }

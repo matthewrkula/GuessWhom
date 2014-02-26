@@ -5,19 +5,10 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.mattkula.guesswhom.ui.CustomTextView
-            android:id="@+id/text_welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/midnight_blue"
-            />
-
     <com.facebook.widget.ProfilePictureView
             android:id="@+id/facebook_profile_picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:layout_marginTop="20dip"
             android:layout_gravity="center_horizontal"
             />
@@ -31,9 +22,8 @@
             android:paddingLeft="20dip"
             android:paddingRight="20dip"
             android:text="@string/new_game"
-            android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:background="@drawable/com_facebook_button_blue"
+            style="@style/button_style"
             />
 
     <com.mattkula.guesswhom.ui.CustomTextView

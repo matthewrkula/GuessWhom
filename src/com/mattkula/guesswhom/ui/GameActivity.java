@@ -46,10 +46,13 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
     TextView hideText;
     TextView replyText;
     TextView questionText;
+    CustomTextView replyWho;
+    CustomTextView questionWho;
     ProgressDialog progressDialog;
 
     String myAnswerId;
     String otherAnswerId;
+    String otherName;
 
     boolean myTurn = false;
 
@@ -84,9 +87,11 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         if(game.opponent_id.equals(myId)){
             myAnswerId = game.opponent_answer;
             otherAnswerId = game.creator_answer;
+            otherName = game.creator_name;
         }else{
             myAnswerId = game.creator_answer;
             otherAnswerId = game.opponent_answer;
+            otherName = game.opponent_name;
         }
 
         ImageView iv = (ImageView)findViewById(R.id.image_my_answer);
@@ -102,8 +107,13 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
 
         askButton = (Button)findViewById(R.id.btn_ask);
         replyText = (TextView)findViewById(R.id.text_reply);
+        replyWho = (CustomTextView)findViewById(R.id.text_reply_who);
         questionText = (TextView)findViewById(R.id.text_question_text);
+        questionWho = (CustomTextView)findViewById(R.id.text_question_who);
         hideText = (TextView)findViewById(R.id.hide_view);
+
+        replyWho.setBold(true);
+        questionWho.setBold(true);
 
         hideText.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -126,32 +136,47 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         else
             itIsTheirTurn();
 
+        ViewGroup parent = (ViewGroup)askButton.getParent();
         if(game.turn_count == 0){
+            for(int i=0; i < parent.getChildCount(); i++){
+                parent.getChildAt(i).setVisibility(View.GONE);
+            }
+            askButton.setVisibility(View.VISIBLE);
             askButton.setText("ASK");
-            questionText.setVisibility(View.GONE);
-            replyText.setVisibility(View.GONE);
         }else if(game.turn_count == 1){
-            replyText.setVisibility(View.GONE);
+            for(int i=0; i < parent.getChildCount(); i++){
+                if(parent.getChildAt(i) == questionText){
+                    parent.getChildAt(i-1).setVisibility(View.VISIBLE);
+                }
+                parent.getChildAt(i).setVisibility(View.GONE);
+            }
+            askButton.setVisibility(View.VISIBLE);
+            questionText.setVisibility(View.VISIBLE);
+            questionWho.setVisibility(View.VISIBLE);
         }
     }
 
     private void itIsTheirTurn(){
         myTurn = false;
-        questionText.setText(String.format("You asked \"%s\".", game.question));
+        questionWho.setText("You asked: ");
+        questionText.setText(String.format("\"%s\"", game.question));
         askButton.setVisibility(View.INVISIBLE);
-        replyText.setText(String.format("You answered \"%s\" to \"%s\".", game.response, game.lastquestion));
+        replyWho.setText("You answered: ");
+        replyText.setText(String.format("\"%s\" to \"%s\"", game.response, game.lastquestion));
     }
 
     private void itIsMyTurn(){
         myTurn = true;
-        questionText.setText(String.format("They asked \"%s\".", game.question));
+        questionWho.setText(otherName + " asked: ");
+        questionText.setText(String.format("\"%s\"", game.question));
         askButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 askQuestion();
             }
         });
-        replyText.setText(String.format("They answered \"%s\" to \"%s\".", game.response, game.lastquestion));
+        replyWho.setText(otherName + " answered: ");
+        replyText.setText(String.format("\"%s\" to \"%s\"", game.response, game.lastquestion));
     }
 
     private void askQuestion(){
@@ -234,7 +259,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         }
 
         Intent i = new Intent(this, ConfirmGuessActivity.class);
-        i.putExtra(ConfirmGuessActivity.EXTRA_URL, String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", answer.fb_id, 200, 200));
+        i.putExtra(ConfirmGuessActivity.EXTRA_URL, String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", answer.fb_id, 300, 300));
         i.putExtra(ConfirmGuessActivity.EXTRA_ANSWER, answer);
         i.putExtra(ConfirmGuessActivity.EXTRA_GAME, game);
         i.putExtra(ConfirmGuessActivity.EXTRA_CORRECT, answer.fb_id.equals(otherAnswerId));

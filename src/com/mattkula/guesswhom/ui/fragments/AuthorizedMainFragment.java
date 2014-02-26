@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,7 +39,6 @@ public class AuthorizedMainFragment extends Fragment {
     public static final int FRIEND_PICKER_CODE = 1;
 
     Button newGameButton;
-    TextView welcomeText;
     ListView listMyGames;
     ProgressDialog progressDialog;
     ProfilePictureView profilePictureView;
@@ -64,7 +64,6 @@ public class AuthorizedMainFragment extends Fragment {
         setHasOptionsMenu(true);
         View v =  inflater.inflate(R.layout.fragment_main_authorized, null);
 
-        welcomeText = (TextView)v.findViewById(R.id.text_welcome);
         profilePictureView = (ProfilePictureView)v.findViewById(R.id.facebook_profile_picture);
         listMyGames = (ListView)v.findViewById(R.id.list_my_games);
         listMyGames.setOnItemClickListener(listener);
@@ -77,6 +76,7 @@ public class AuthorizedMainFragment extends Fragment {
                 startActivityForResult(i, FRIEND_PICKER_CODE);
             }
         });
+        newGameButton.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/Raleway-Regular.ttf"));
 
         progressDialog = new ProgressDialog(getActivity());
         gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
@@ -95,7 +95,6 @@ public class AuthorizedMainFragment extends Fragment {
             mId = PreferenceManager.getProfileId(getActivity());
             getMyGames();
             profilePictureView.setProfileId(mId);
-            welcomeText.setText("Welcome to Guess Whom, " + mFirstName + ".");
         }
     }
 
@@ -197,8 +196,6 @@ public class AuthorizedMainFragment extends Fragment {
     }
 
     private void makeMeRequest(){
-        welcomeText.setVisibility(View.INVISIBLE);
-
         simpleFacebook.getProfile(new SimpleFacebook.OnProfileRequestListener() {
 
             @Override
@@ -208,8 +205,6 @@ public class AuthorizedMainFragment extends Fragment {
                 mFirstName = profile.getFirstName();
                 mId = profile.getId();
                 profilePictureView.setProfileId(mId);
-                welcomeText.setText("Welcome to Guess Whom, " + mFirstName + ".");
-                welcomeText.setVisibility(View.VISIBLE);
                 getMyGames();
             }
 

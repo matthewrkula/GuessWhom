@@ -22,10 +22,10 @@
             android:background="@drawable/black_gradient"
             android:textColor="@android:color/white"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp"
             android:gravity="center"
             android:text="test text"
             android:textSize="10sp"
+            android:maxLines="1"
             />
 
 </RelativeLayout>

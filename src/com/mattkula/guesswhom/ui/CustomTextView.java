@@ -3,6 +3,7 @@ package com.mattkula.guesswhom.ui;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -11,6 +12,7 @@ import android.widget.TextView;
 public class CustomTextView extends TextView {
 
     static Typeface typeface;
+    static Typeface typefaceBold;
 
     public CustomTextView(Context context) {
         super(context);
@@ -26,6 +28,17 @@ public class CustomTextView extends TextView {
         if(typeface == null){
             typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Raleway-Regular.ttf");
         }
+        if(typefaceBold == null){
+            typefaceBold = Typeface.createFromAsset(getContext().getAssets(), "fonts/Raleway-Bold.ttf");
+        }
         setTypeface(typeface);
+    }
+
+    public void setBold(boolean setBold){
+        if(setBold){
+            setTypeface(typefaceBold);
+        } else {
+            setTypeface(typeface);
+        }
     }
 }

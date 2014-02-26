@@ -45,26 +45,23 @@
             android:id="@+id/btn_confirm_yes"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/com_facebook_button_blue"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
             android:text="YES"
             android:layout_alignRight="@+id/image_confirm_profile"
             android:layout_below="@+id/image_confirm_profile"
             android:layout_marginTop="10dp"
+            style="@style/button_style"
             />
 
     <Button
             android:id="@+id/btn_confirm_no"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/com_facebook_button_blue"
-            android:textColor="@android:color/white"
             android:textSize="20sp"
             android:text="NO"
             android:layout_alignLeft="@+id/image_confirm_profile"
             android:layout_below="@+id/image_confirm_profile"
             android:layout_marginTop="10dp"
+            style="@style/button_style"
             />
 
 </RelativeLayout>

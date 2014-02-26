@@ -13,6 +13,7 @@ import android.text.style.TypefaceSpan;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import com.crashlytics.android.Crashlytics;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.ui.fragments.AuthorizedMainFragment;
@@ -35,6 +36,8 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Crashlytics.start(this);
+
         setContentView(R.layout.activity_main);
 
         int titleId = getResources().getIdentifier("action_bar_title", "id",
@@ -61,6 +64,7 @@ public class MainActivity extends FragmentActivity {
 
         fragments[UNAUTHORIZED] = unauthorizedFragment;
         fragments[AUTHORIZED] = authorizedFragment;
+
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         for(int i=0; i < fragments.length; i++)

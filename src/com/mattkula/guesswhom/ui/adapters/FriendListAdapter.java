@@ -58,6 +58,12 @@ public class FriendListAdapter extends BaseAdapter implements Filterable{
         picture.setPresetSize(ProfilePictureView.SMALL);
         picture.setProfileId(friend.getId());
 
+        if(i % 2 == 0)
+            v.setBackgroundColor(0x33ffffff);
+        else
+            v.setBackgroundColor(0x00ffffff);
+
+        v.setPadding(4, 4, 4, 4);
         return v;
     }
 

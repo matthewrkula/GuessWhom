@@ -28,5 +28,6 @@
         <activity android:name=".ui.ConfirmGuessActivity"
                 android:screenOrientation="portrait"
                 android:theme="@style/Transparent"/>
+        <meta-data android:name="com.crashlytics.ApiKey" android:value="8cb1d809fc2ca24e84d5f3d9441314dffc4f0670"/>
     </application>
 </manifest>

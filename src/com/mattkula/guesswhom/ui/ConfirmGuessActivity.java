@@ -56,9 +56,11 @@ public class ConfirmGuessActivity extends Activity {
         String url = extras.getString(EXTRA_URL);
         answer = (Answer)extras.getSerializable(EXTRA_ANSWER);
         game = (Game)extras.getSerializable(EXTRA_GAME);
+        answerIsCorrect = extras.getBoolean(EXTRA_CORRECT);
+
+        Log.e("ASDF", answerIsCorrect ? "Correct!" : "Wrong!");
 
         profilePicture = (ImageView)findViewById(R.id.image_confirm_profile);
-
 
         answerEdit = (EditText)findViewById(R.id.edit_confirm_question_answer);
         answerEdit.clearFocus();
@@ -130,7 +132,7 @@ public class ConfirmGuessActivity extends Activity {
             return;
         }
 
-        sendGuess("Is it " + answer.name + "?", false);
+        sendGuess("Is it " + answer.name + "?", answerIsCorrect);
     }
 
     private void sendGuess(String text, boolean isCompleted){

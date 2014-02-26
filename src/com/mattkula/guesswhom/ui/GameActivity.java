@@ -241,7 +241,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
                 if (progressDialog != null && progressDialog.isShowing())
                     progressDialog.dismiss();
 
-                Toast.makeText(getApplicationContext(), "Error sending question", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Error sending question. Oops.", Toast.LENGTH_LONG).show();
                 Log.e("ASDF", volleyError.toString());
                 volleyError.printStackTrace();
             }

@@ -82,19 +82,31 @@
       <file leaf-file-name="activity_game.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/activity_game.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="39" column="59" selection-start="1750" selection-end="1750" vertical-scroll-proportion="-11.538462" vertical-offset="285" max-vertical-offset="1500">
+=======
+            <state line="41" column="59" selection-start="1845" selection-end="1845" vertical-scroll-proportion="-11.538462" vertical-offset="315" max-vertical-offset="2115">
+>>>>>>> animate-confirm-activity
               <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer">
             <state />
           </provider>
+<<<<<<< HEAD
         </entry>
       </file>
       <file leaf-file-name="fragment_main_authorized.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/fragment_main_authorized.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="34" column="37" selection-start="1328" selection-end="1328" vertical-scroll-proportion="-14.423077" vertical-offset="135" max-vertical-offset="900">
+=======
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_main_authorized.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/fragment_main_authorized.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="37" selection-start="1009" selection-end="1009" vertical-scroll-proportion="-14.423077" vertical-offset="0" max-vertical-offset="810">
               <folding />
             </state>
           </provider>
@@ -106,7 +118,27 @@
       <file leaf-file-name="activity_friendpicker.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/activity_friendpicker.xml">
           <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="12" selection-start="695" selection-end="695" vertical-scroll-proportion="-10.384615" vertical-offset="0" max-vertical-offset="405">
+>>>>>>> animate-confirm-activity
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="activity_friendpicker.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/activity_friendpicker.xml">
+          <provider selected="true" editor-type-id="text-editor">
             <state line="15" column="12" selection-start="524" selection-end="524" vertical-scroll-proportion="-8.653846" vertical-offset="0" max-vertical-offset="375">
+=======
+      <file leaf-file-name="activity_confirmguess.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/activity_confirmguess.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="38" selection-start="2159" selection-end="2159" vertical-scroll-proportion="-25.884615" vertical-offset="167" max-vertical-offset="1080">
+>>>>>>> animate-confirm-activity
               <folding />
             </state>
           </provider>
@@ -118,7 +150,11 @@
       <file leaf-file-name="alert_reply.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/alert_reply.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="25" column="48" selection-start="943" selection-end="943" vertical-scroll-proportion="-14.423077" vertical-offset="0" max-vertical-offset="510">
+=======
+            <state line="27" column="62" selection-start="1088" selection-end="1088" vertical-scroll-proportion="-15.576923" vertical-offset="0" max-vertical-offset="540">
+>>>>>>> animate-confirm-activity
               <folding />
             </state>
           </provider>
@@ -130,7 +166,11 @@
       <file leaf-file-name="styles.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="13" column="0" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+=======
+            <state line="23" column="0" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+>>>>>>> animate-confirm-activity
               <folding />
             </state>
           </provider>
@@ -139,6 +179,7 @@
       <file leaf-file-name="GameActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="197" column="62" selection-start="7092" selection-end="7092" vertical-scroll-proportion="0.0" vertical-offset="2625" max-vertical-offset="4950">
               <folding>
                 <element signature="imports" expanded="true" />
@@ -147,6 +188,11 @@
                 <element signature="e#6262#6503#0" expanded="false" />
                 <element signature="e#6484#6485#0" expanded="false" />
                 <marker date="1393379841312" expanded="true" signature="12071:12077" placeholder="{...}" />
+=======
+            <state line="229" column="62" selection-start="8406" selection-end="8406" vertical-scroll-proportion="0.0" vertical-offset="2895" max-vertical-offset="4140">
+              <folding>
+                <element signature="imports" expanded="true" />
+>>>>>>> animate-confirm-activity
               </folding>
             </state>
           </provider>
@@ -155,7 +201,11 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="42" column="24" selection-start="1550" selection-end="1550" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="2370">
+=======
+            <state line="56" column="24" selection-start="2103" selection-end="2103" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="2595">
+>>>>>>> animate-confirm-activity
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1438#1479#0" expanded="false" />
@@ -167,10 +217,15 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="22" column="60" selection-start="1114" selection-end="1114" vertical-scroll-proportion="0.5518395" vertical-offset="0" max-vertical-offset="598">
               <folding>
                 <element signature="e#657#675#0" expanded="false" />
               </folding>
+=======
+            <state line="5" column="38" selection-start="260" selection-end="260" vertical-scroll-proportion="0.12541807" vertical-offset="0" max-vertical-offset="598">
+              <folding />
+>>>>>>> animate-confirm-activity
             </state>
           </provider>
         </entry>
@@ -178,7 +233,11 @@
       <file leaf-file-name="griditem_person.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/griditem_person.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="27" column="0" selection-start="1019" selection-end="1019" vertical-scroll-proportion="-15.576923" vertical-offset="0" max-vertical-offset="525">
+=======
+            <state line="28" column="0" selection-start="1070" selection-end="1070" vertical-scroll-proportion="-16.153847" vertical-offset="0" max-vertical-offset="540">
+>>>>>>> animate-confirm-activity
               <folding />
             </state>
           </provider>
@@ -228,6 +287,10 @@
         <option value="$PROJECT_DIR$/res/layout/activity_friendpicker.xml" />
         <option value="$PROJECT_DIR$/res/layout/listitem_friend.xml" />
         <option value="$PROJECT_DIR$/res/layout/listitem_games.xml" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+>>>>>>> animate-confirm-activity
         <option value="$PROJECT_DIR$/res/drawable/bg_button.xml" />
         <option value="$PROJECT_DIR$/res/drawable/bg_button_nonpressed.xml" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java" />
@@ -247,7 +310,10 @@
         <option value="$PROJECT_DIR$/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java" />
         <option value="$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+=======
+>>>>>>> animate-confirm-activity
       </list>
     </option>
   </component>
@@ -303,6 +369,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+=======
               <option name="myItemId" value="GuessWhom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -313,6 +381,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+>>>>>>> animate-confirm-activity
               <option name="myItemId" value="GuessWhom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -415,7 +484,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="layout-sw600dp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -432,8 +501,51 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
             <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+>>>>>>> animate-confirm-activity
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Guess Whom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GuessWhom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="layout" />
+=======
               <option name="myItemId" value="drawable" />
+>>>>>>> animate-confirm-activity
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Guess Whom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GuessWhom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fonts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -749,6 +861,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/ConfirmGuessActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="8" selection-start="2947" selection-end="2947" vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="3015">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> animate-confirm-activity
     <entry file="file://$PROJECT_DIR$/res/layout/action_refreshimage.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="44" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="225" />
@@ -850,6 +972,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
+<<<<<<< HEAD
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="60" selection-start="319" selection-end="319" vertical-scroll-proportion="-3.4615386" vertical-offset="0" max-vertical-offset="525">
+=======
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="60" selection-start="319" selection-end="319" vertical-scroll-proportion="-3.4615386" vertical-offset="0" max-vertical-offset="525">
           <folding />
@@ -857,6 +983,18 @@
       </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout-sw600dp/griditem_person.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="33" selection-start="855" selection-end="855" vertical-scroll-proportion="-12.692307" vertical-offset="0" max-vertical-offset="525">
+>>>>>>> animate-confirm-activity
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+<<<<<<< HEAD
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/black_gradient.xml">
@@ -875,6 +1013,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="4" selection-start="956" selection-end="956" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="960" />
       </provider>
+=======
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/gradient_blue_reversed.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="91" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/black_gradient.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="7" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/gradient_blue.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/android/android-sdk-linux/platforms/android-14/android.jar!/res/drawable/list_highlight_inactive.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/data/models/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="4" selection-start="956" selection-end="956" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="960" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/listitem_friend.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="40" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+>>>>>>> animate-confirm-activity
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/listitem_games.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -896,6 +1078,7 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/src/com/facebook/widget/PickerFragment.java">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15090" />
       </provider>
@@ -903,29 +1086,51 @@
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/adapters/MyGamesAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="12" selection-start="1084" selection-end="1084" vertical-scroll-proportion="0.6" vertical-offset="96" max-vertical-offset="1035" />
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15090" />
+>>>>>>> animate-confirm-activity
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/adapters/FriendListAdapter.java">
+    <entry file="file://$PROJECT_DIR$/res/drawable/bg_button.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="62" column="0" selection-start="1775" selection-end="1775" vertical-scroll-proportion="-0.10675039" vertical-offset="803" max-vertical-offset="1440" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/menu_fragment_authorized.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+=======
+        <state line="4" column="10" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/bg_button_pressed.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="10" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+>>>>>>> animate-confirm-activity
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/GameBoardFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="243" column="12" selection-start="7546" selection-end="7546" vertical-scroll-proportion="0.0" vertical-offset="2610" max-vertical-offset="3330">
+=======
+    <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="43" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
+>>>>>>> animate-confirm-activity
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java">
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/adapters/MyGamesAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="78" column="91" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="3240">
           <folding />
         </state>
@@ -964,6 +1169,53 @@
     <entry file="file://$PROJECT_DIR$/res/layout/alert_reply.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="48" selection-start="943" selection-end="943" vertical-scroll-proportion="-14.423077" vertical-offset="0" max-vertical-offset="510">
+=======
+        <state line="46" column="12" selection-start="1084" selection-end="1084" vertical-scroll-proportion="0.6" vertical-offset="96" max-vertical-offset="1035" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/adapters/FriendListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="0" selection-start="1775" selection-end="1775" vertical-scroll-proportion="-0.10675039" vertical-offset="803" max-vertical-offset="1440" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/bg_button_nonpressed.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="112" selection-end="112" vertical-scroll-proportion="0.07064364" vertical-offset="0" max-vertical-offset="637">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/menu/menu_fragment_authorized.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/CustomTextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="31" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/GameBoardFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="243" column="12" selection-start="7546" selection-end="7546" vertical-scroll-proportion="0.0" vertical-offset="2610" max-vertical-offset="3330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/fragments/AuthorizedMainFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="91" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="3240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_game.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="59" selection-start="1845" selection-end="1845" vertical-scroll-proportion="-11.538462" vertical-offset="315" max-vertical-offset="2115">
           <folding />
         </state>
       </provider>
@@ -971,16 +1223,46 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/fragment_main_authorized.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="37" selection-start="1009" selection-end="1009" vertical-scroll-proportion="-14.423077" vertical-offset="0" max-vertical-offset="810">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_friendpicker.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="12" selection-start="695" selection-end="695" vertical-scroll-proportion="-10.384615" vertical-offset="0" max-vertical-offset="405">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_confirmguess.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="38" selection-start="2159" selection-end="2159" vertical-scroll-proportion="-25.884615" vertical-offset="167" max-vertical-offset="1080">
+>>>>>>> animate-confirm-activity
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/griditem_person.xml">
+=======
+    <entry file="file://$PROJECT_DIR$/res/layout/alert_reply.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1019" selection-end="1019" vertical-scroll-proportion="-15.576923" vertical-offset="0" max-vertical-offset="525">
+        <state line="27" column="62" selection-start="1088" selection-end="1088" vertical-scroll-proportion="-15.576923" vertical-offset="0" max-vertical-offset="540">
+>>>>>>> animate-confirm-activity
           <folding />
         </state>
       </provider>
@@ -988,6 +1270,23 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/res/layout/griditem_person.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="1019" selection-end="1019" vertical-scroll-proportion="-15.576923" vertical-offset="0" max-vertical-offset="525">
+=======
+    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+>>>>>>> animate-confirm-activity
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="197" column="62" selection-start="7092" selection-end="7092" vertical-scroll-proportion="0.0" vertical-offset="2625" max-vertical-offset="4950">
@@ -1018,6 +1317,47 @@
           <folding>
             <element signature="e#657#675#0" expanded="false" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/res/layout/griditem_person.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="1070" selection-end="1070" vertical-scroll-proportion="-16.153847" vertical-offset="0" max-vertical-offset="540">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/ConfirmGuessActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="8" selection-start="2947" selection-end="2947" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="2490">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/GameActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="229" column="62" selection-start="8406" selection-end="8406" vertical-scroll-proportion="0.0" vertical-offset="2895" max-vertical-offset="4140">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mattkula/guesswhom/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="24" selection-start="2103" selection-end="2103" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="2595">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="38" selection-start="260" selection-end="260" vertical-scroll-proportion="0.12541807" vertical-offset="0" max-vertical-offset="598">
+          <folding />
+>>>>>>> animate-confirm-activity
         </state>
       </provider>
     </entry>

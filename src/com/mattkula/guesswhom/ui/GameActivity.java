@@ -24,6 +24,7 @@ import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.data.models.Answer;
 import com.mattkula.guesswhom.data.models.Game;
 import com.mattkula.guesswhom.ui.fragments.GameBoardFragment;
+import com.squareup.picasso.Picasso;
 import com.sromku.simple.fb.SimpleFacebook;
 import org.json.JSONObject;
 
@@ -45,10 +46,13 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
     TextView hideText;
     TextView replyText;
     TextView questionText;
+    CustomTextView replyWho;
+    CustomTextView questionWho;
     ProgressDialog progressDialog;
 
     String myAnswerId;
     String otherAnswerId;
+    String otherName;
 
     boolean myTurn = false;
 
@@ -69,13 +73,13 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         fragment = (GameBoardFragment)getSupportFragmentManager().findFragmentById(R.id.game_fragment);
 
         setUpHeader();
+        fragment.setGame(game);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         simpleFacebook = SimpleFacebook.getInstance();
-        fragment.setGame(game);
     }
 
     private void setUpHeader(){
@@ -83,20 +87,33 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         if(game.opponent_id.equals(myId)){
             myAnswerId = game.opponent_answer;
             otherAnswerId = game.creator_answer;
+            otherName = game.creator_name;
         }else{
             myAnswerId = game.creator_answer;
             otherAnswerId = game.opponent_answer;
+            otherName = game.opponent_name;
         }
 
-        ((ProfilePictureView)findViewById(R.id.image_my_answer)).setProfileId(myAnswerId);
+        ImageView iv = (ImageView)findViewById(R.id.image_my_answer);
+
+        Picasso.with(this)
+                .load(String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", myAnswerId, 200, 200))
+                .placeholder(R.drawable.default_user)
+                .into(iv);
+
         for(int i=0; i < game.answers.length; i++)
             if(game.answers[i].fb_id.equals(myAnswerId))
                 ((TextView)findViewById(R.id.text_my_answer_name)).setText(game.answers[i].name);
 
         askButton = (Button)findViewById(R.id.btn_ask);
         replyText = (TextView)findViewById(R.id.text_reply);
+        replyWho = (CustomTextView)findViewById(R.id.text_reply_who);
         questionText = (TextView)findViewById(R.id.text_question_text);
+        questionWho = (CustomTextView)findViewById(R.id.text_question_who);
         hideText = (TextView)findViewById(R.id.hide_view);
+
+        replyWho.setBold(true);
+        questionWho.setBold(true);
 
         hideText.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -119,32 +136,47 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         else
             itIsTheirTurn();
 
+        ViewGroup parent = (ViewGroup)askButton.getParent();
         if(game.turn_count == 0){
+            for(int i=0; i < parent.getChildCount(); i++){
+                parent.getChildAt(i).setVisibility(View.GONE);
+            }
+            askButton.setVisibility(View.VISIBLE);
             askButton.setText("ASK");
-            questionText.setVisibility(View.GONE);
-            replyText.setVisibility(View.GONE);
         }else if(game.turn_count == 1){
-            replyText.setVisibility(View.GONE);
+            for(int i=0; i < parent.getChildCount(); i++){
+                if(parent.getChildAt(i) == questionText){
+                    parent.getChildAt(i-1).setVisibility(View.VISIBLE);
+                }
+                parent.getChildAt(i).setVisibility(View.GONE);
+            }
+            askButton.setVisibility(View.VISIBLE);
+            questionText.setVisibility(View.VISIBLE);
+            questionWho.setVisibility(View.VISIBLE);
         }
     }
 
     private void itIsTheirTurn(){
         myTurn = false;
-        questionText.setText(String.format("You asked \"%s\".", game.question));
+        questionWho.setText("You asked: ");
+        questionText.setText(String.format("\"%s\"", game.question));
         askButton.setVisibility(View.INVISIBLE);
-        replyText.setText(String.format("You answered \"%s\" to \"%s\".", game.response, game.lastquestion));
+        replyWho.setText("You answered: ");
+        replyText.setText(String.format("\"%s\" to \"%s\"", game.response, game.lastquestion));
     }
 
     private void itIsMyTurn(){
         myTurn = true;
-        questionText.setText(String.format("They asked \"%s\".", game.question));
+        questionWho.setText(otherName + " asked: ");
+        questionText.setText(String.format("\"%s\"", game.question));
         askButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 askQuestion();
             }
         });
-        replyText.setText(String.format("They answered \"%s\" to \"%s\".", game.response, game.lastquestion));
+        replyWho.setText(otherName + " answered: ");
+        replyText.setText(String.format("\"%s\" to \"%s\"", game.response, game.lastquestion));
     }
 
     private void askQuestion(){
@@ -226,64 +258,25 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
             return;
         }
 
-        final EditText e = new EditText(this);
-        e.setHint("Please respond to their question.");
-
-        AlertDialog d = new AlertDialog.Builder(this)
-                .setTitle("Do you want to guess " + answer.name + "?")
-                .setView(e)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if(e.getText().toString() == null || e.getText().toString().equals("")){
-                            Toast.makeText(GameActivity.this, "Repond to their question before sending!", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        guessAnswer(answer, e.getText().toString());
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        dialogInterface.dismiss();
-                    }
-                }).create();
-
-        d.show();
-    }
-
-    private void guessAnswer(Answer answer, String response){
-        if(answer.fb_id.equals(otherAnswerId)){
-
-            new AlertDialog.Builder(this)
-                    .setTitle("You Win!")
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                        }
-                    })
-                    .create().show();
-
-            sendQuestion("Is it " + answer.name + "?", response, false, true);
-        } else {
-            sendQuestion("Is it " + answer.name + "?", response, false, false);
-
-            new AlertDialog.Builder(this)
-                    .setTitle("Wrong!")
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                        }
-                    })
-                    .create().show();
-        }
+        Intent i = new Intent(this, ConfirmGuessActivity.class);
+        i.putExtra(ConfirmGuessActivity.EXTRA_URL, String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d", answer.fb_id, 300, 300));
+        i.putExtra(ConfirmGuessActivity.EXTRA_ANSWER, answer);
+        i.putExtra(ConfirmGuessActivity.EXTRA_GAME, game);
+        i.putExtra(ConfirmGuessActivity.EXTRA_CORRECT, answer.fb_id.equals(otherAnswerId));
+        startActivityForResult(i, 23);
+        this.overridePendingTransition(0, 0);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         simpleFacebook.onActivityResult(this, requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 23){
+            if(resultCode == RESULT_OK){
+                finish();
+            }
+        }
     }
 
     @Override
@@ -293,32 +286,5 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
                 finish();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private class SpinAdapter extends ArrayAdapter<String> {
-        public SpinAdapter(Context context, int textViewResourceId, String[] objects) {
-            super(context, textViewResourceId, objects);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            TextView tv = new TextView(getApplicationContext());
-            tv.setText(getItem(position));
-            tv.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 50));
-            tv.setTextSize(20);
-            tv.setTextColor(0xff000000);
-            return tv;
-        }
-
-        @Override
-        public View getDropDownView(int position, View convertView, ViewGroup parent) {
-            TextView tv = new TextView(getApplicationContext());
-            tv.setText(getItem(position));
-            tv.setLayoutParams(new AbsListView.LayoutParams(150, 100));
-            tv.setTextSize(20);
-            tv.setTextColor(0xff000000);
-            tv.setPadding(20, 20, 0, 0);
-            return tv;
-        }
     }
 }

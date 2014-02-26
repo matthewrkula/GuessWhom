@@ -18,12 +18,14 @@
             android:id="@+id/edit_response"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textAutoCorrect|textAutoComplete"
             android:hint="Reply"/>
 
     <EditText
             android:id="@+id/edit_new_question"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textAutoCorrect|textAutoComplete"
             android:hint="Your question"/>
 
 </LinearLayout>

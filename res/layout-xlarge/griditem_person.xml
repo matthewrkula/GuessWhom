@@ -4,8 +4,7 @@
               android:orientation="vertical"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:padding="2dp"
-              android:background="#0000"
+              android:background="#33ffffff"
         >
 
     <ImageView
@@ -15,17 +14,16 @@
             android:layout_centerHorizontal="true"
             />
 
-    <com.mattkula.guesswhom.ui.CustomTextView
+    <TextView
             android:id="@+id/text_profile_name"
             android:layout_width="match_parent"
-            android:layout_height="15dip"
+            android:layout_height="20dip"
             android:background="@drawable/black_gradient"
             android:textColor="@android:color/white"
             android:layout_alignParentBottom="true"
-            android:gravity="center"
+            android:gravity="center_horizontal|top"
             android:text="test text"
-            android:textSize="10sp"
-            android:maxLines="1"
+            android:textSize="14sp"
             />
 
 </RelativeLayout>

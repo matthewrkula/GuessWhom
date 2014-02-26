@@ -3,8 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@drawable/gradient_blue">
+              android:layout_height="match_parent">
 
     <fragment
             android:id="@+id/game_fragment"
@@ -13,32 +12,31 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             />
-
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@android:color/transparent">
+            android:background="#ff2c3e50">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="100dip"
-                        android:layout_height="100dip"
+                        android:layout_width="150dip"
+                        android:layout_height="150dip"
                         android:layout_margin="8dip"
                         android:layout_gravity="center_vertical"
                         android:background="#33ffffff">
 
-            <ImageView
+            <com.facebook.widget.ProfilePictureView
                     android:id="@+id/image_my_answer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"/>
 
-            <com.mattkula.guesswhom.ui.CustomTextView
+            <TextView
                     android:id="@+id/text_my_answer_name"
                     android:layout_width="match_parent"
                     android:layout_height="15dip"
-                    android:background="@drawable/black_gradient"
+                    android:background="#88000000"
                     android:textColor="@android:color/white"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
@@ -46,17 +44,13 @@
                     android:textSize="10sp"
                     />
 
-            <com.mattkula.guesswhom.ui.CustomTextView
+            <TextView
                     android:id="@+id/hide_view"
-                    android:layout_width="100dip"
-                    android:layout_height="100dip"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="#ffca4f0e"
                     android:text="Press to view your secret friend"
                     android:gravity="center"
-                    android:shadowRadius="2"
-                    android:shadowColor="#8000"
-                    android:shadowDy="2"
-                    android:shadowDx="0"
                     android:textColor="@android:color/white"/>
 
         </RelativeLayout>
@@ -67,51 +61,16 @@
                 android:orientation="vertical"
                 android:paddingTop="8dip">
 
-            <com.mattkula.guesswhom.ui.CustomTextView
-                    android:id="@+id/text_reply_who"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="#ffff"
-                    android:layout_marginLeft="8dip"
-                    />
-
-            <View
-                    android:layout_width="160dp"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="8dip"
-                    android:background="#ffff"/>
-
-            <com.mattkula.guesswhom.ui.CustomTextView
+            <TextView
                     android:id="@+id/text_reply"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textColor="#ffff"
                     android:layout_marginLeft="8dip"
-                    android:layout_marginBottom="5dp"
                     />
 
-            <com.mattkula.guesswhom.ui.CustomTextView
-                    android:id="@+id/text_question_who"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="#ffff"
-                    android:layout_marginLeft="8dip"
-                    />
-
-            <View
-                    android:layout_width="160dp"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="8dip"
-                    android:background="#ffff"/>
-
-            <com.mattkula.guesswhom.ui.CustomTextView
+            <TextView
                     android:id="@+id/text_question_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -127,9 +86,9 @@
                     android:layout_margin="8dip"
                     android:text="REPLY"
                     android:layout_gravity="center_horizontal"
-                    style="@style/button_style"
+                    android:background="@drawable/com_facebook_button_blue"
+                    android:textColor="@android:color/white"
                     />
-
         </LinearLayout>
     </LinearLayout>
 

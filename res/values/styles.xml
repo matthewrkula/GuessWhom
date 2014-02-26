@@ -1,17 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Holo.Light">
-        <!--<item name="android:actionBarStyle">@style/AppTheme.ActionBarStyle</item>-->
-    </style>
-
     <style name="CustomActionBarTheme"
            parent="android:Theme.Holo.Light">
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:actionBarStyle">@style/ActionBarStyle</item>
+        <item name="android:actionMenuTextColor">#ff2c3e50</item>
     </style>
 
-    <style name="ActionBarStyle" parent="android:Widget.Holo.Light.ActionBar">
-        <!--<item name="android:windowActionBarOverlay">true</item>-->
-        <item name="android:background">#55888888</item>
+    <style name="ActionBarStyle" parent="android:Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">#0000</item>
+        <item name="android:titleTextStyle">@style/ActionBarStyle.Text</item>
+    </style>
+
+    <style name="ActionBarStyle.Text" parent="android:TextAppearance.Holo">
+        <item name="android:textColor">#ff2c3e50</item>
+    </style>
+
+    <style name="Transparent" parent="android:Theme.Holo.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="button_style">
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowColor">#5000</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowDx">0</item>
     </style>
 </resources>

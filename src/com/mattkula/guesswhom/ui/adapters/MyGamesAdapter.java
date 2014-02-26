@@ -64,7 +64,14 @@ public class MyGamesAdapter extends BaseAdapter {
         opponent.setText(s);
         time.setText(prettyTime.format(game.updated_at));
         ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.game_profile_picture);
-        picture.setProfileId(game.opponent_id);
+
+
+        picture.setProfileId(game.opponent_id.equals(PreferenceManager.getProfileId(c)) ? game.creator_id : game.opponent_id);
+
+        if(i % 2 == 0)
+            v.setBackgroundColor(0x33ffffff);
+        else
+            v.setBackgroundColor(0x00ffffff);
 
         return v;
     }

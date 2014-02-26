@@ -50,14 +50,20 @@ public class FriendListAdapter extends BaseAdapter implements Filterable{
         View v = convertview;
         Profile friend = friendsFiltered.get(i);
         if(v == null)
-            v = View.inflate(c, R.layout.listitem_games, null);
+            v = View.inflate(c, R.layout.listitem_friend, null);
 
-        TextView opponent = (TextView)v.findViewById(R.id.text_opponent);
+        TextView opponent = (TextView)v.findViewById(R.id.text_friend_name);
         opponent.setText(friend.getName());
-        ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.game_profile_picture);
+        ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.friend_profile_picture);
         picture.setPresetSize(ProfilePictureView.SMALL);
         picture.setProfileId(friend.getId());
 
+        if(i % 2 == 0)
+            v.setBackgroundColor(0x33ffffff);
+        else
+            v.setBackgroundColor(0x00ffffff);
+
+        v.setPadding(4, 4, 4, 4);
         return v;
     }
 

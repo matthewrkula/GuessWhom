@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,7 +39,6 @@ public class AuthorizedMainFragment extends Fragment {
     public static final int FRIEND_PICKER_CODE = 1;
 
     Button newGameButton;
-    TextView welcomeText;
     ListView listMyGames;
     ProgressDialog progressDialog;
     ProfilePictureView profilePictureView;
@@ -64,7 +64,6 @@ public class AuthorizedMainFragment extends Fragment {
         setHasOptionsMenu(true);
         View v =  inflater.inflate(R.layout.fragment_main_authorized, null);
 
-        welcomeText = (TextView)v.findViewById(R.id.text_welcome);
         profilePictureView = (ProfilePictureView)v.findViewById(R.id.facebook_profile_picture);
         listMyGames = (ListView)v.findViewById(R.id.list_my_games);
         listMyGames.setOnItemClickListener(listener);
@@ -77,6 +76,7 @@ public class AuthorizedMainFragment extends Fragment {
                 startActivityForResult(i, FRIEND_PICKER_CODE);
             }
         });
+        newGameButton.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/Raleway-Regular.ttf"));
 
         progressDialog = new ProgressDialog(getActivity());
         gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
@@ -95,7 +95,6 @@ public class AuthorizedMainFragment extends Fragment {
             mId = PreferenceManager.getProfileId(getActivity());
             getMyGames();
             profilePictureView.setProfileId(mId);
-            welcomeText.setText("Welcome to Guess Whom, " + mFirstName + ".");
         }
     }
 
@@ -169,30 +168,34 @@ public class AuthorizedMainFragment extends Fragment {
                 opponentId,
                 simpleFacebook.getAccessToken());
 
+        Log.e("ASDF", "New game url: " + url);
+
         Request newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 updateProgressDialog(false, null);
 
                 Game game = gson.fromJson(response.toString(), Game.class);
+                Arrays.sort(game.answers);
                 if (game != null){
                     PreferenceManager.setOpponentName(getActivity(), game.id, opponentName);
                     startGameActivity(game);
                 }
             }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                Log.e("ASDF", volleyError.toString());
+                Toast.makeText(getActivity(), "Error starting game", Toast.LENGTH_LONG).show();
                 updateProgressDialog(false, null);
             }
-        }).setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        }).setRetryPolicy(new DefaultRetryPolicy(10000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         ApplicationController.getInstance().getRequestQueue().add(newGameRequest);
     }
 
     private void makeMeRequest(){
-        welcomeText.setVisibility(View.INVISIBLE);
-
         simpleFacebook.getProfile(new SimpleFacebook.OnProfileRequestListener() {
 
             @Override
@@ -202,8 +205,6 @@ public class AuthorizedMainFragment extends Fragment {
                 mFirstName = profile.getFirstName();
                 mId = profile.getId();
                 profilePictureView.setProfileId(mId);
-                welcomeText.setText("Welcome to Guess Whom, " + mFirstName + ".");
-                welcomeText.setVisibility(View.VISIBLE);
                 getMyGames();
             }
 
@@ -231,6 +232,10 @@ public class AuthorizedMainFragment extends Fragment {
             public void onResponse(String s) {
                 games = gson.fromJson(s, Game[].class);
                 Arrays.sort(games);
+
+                for(Game game : games){
+                    Arrays.sort(game.answers);
+                }
                 updateProgressDialog(false, null);
 
                 listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));

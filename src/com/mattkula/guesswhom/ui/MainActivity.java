@@ -1,12 +1,19 @@
 package com.mattkula.guesswhom.ui;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
+import com.crashlytics.android.Crashlytics;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.ui.fragments.AuthorizedMainFragment;
@@ -29,7 +36,14 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Crashlytics.start(this);
+
         setContentView(R.layout.activity_main);
+
+        int titleId = getResources().getIdentifier("action_bar_title", "id",
+                "android");
+        TextView yourTextView = (TextView) findViewById(titleId);
+        yourTextView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Raleway-Bold.ttf"));
 
         // Set up SimpleFacebookConfiguration
         Permissions[] permissions = new Permissions[]{
@@ -50,6 +64,7 @@ public class MainActivity extends FragmentActivity {
 
         fragments[UNAUTHORIZED] = unauthorizedFragment;
         fragments[AUTHORIZED] = authorizedFragment;
+
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         for(int i=0; i < fragments.length; i++)

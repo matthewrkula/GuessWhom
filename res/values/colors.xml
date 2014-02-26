@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="game_background_blue">#ff62a5b8</color>
+    <color name="midnight_blue">#ff2c3e50</color>
+    <color name="clouds">#ffecf0f1</color>
+    <color name="bright_orange">#ffec8d53</color>
+    <color name="bright_orange_down">#ffdb7e42</color>
+    <color name="dark_orange">#ffbe6a38</color>
+    <color name="dark_orange_down">#ffad5b27</color>
+</resources>

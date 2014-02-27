@@ -40,7 +40,7 @@ public class AuthorizedMainFragment extends Fragment {
 
     public static final int FRIEND_PICKER_CODE = 1;
 
-    Button newGameButton;
+    Button btnNewGame;
     ListView listMyGames;
     TextView textGamesInProgress;
     ProgressDialog progressDialog;
@@ -76,21 +76,21 @@ public class AuthorizedMainFragment extends Fragment {
         setHasOptionsMenu(true);
         View v =  inflater.inflate(R.layout.fragment_main_authorized, null);
 
+        textGamesInProgress = (TextView)v.findViewById(R.id.text_games_in_progress);
         profilePictureView = (ProfilePictureView)v.findViewById(R.id.facebook_profile_picture);
         listMyGames = (ListView)v.findViewById(R.id.list_my_games);
         listMyGames.setOnItemClickListener(listener);
         listMyGames.setOnItemLongClickListener(listenerLong);
-        textGamesInProgress = (TextView)v.findViewById(R.id.text_games_in_progress);
 
-        newGameButton = (Button)v.findViewById(R.id.btn_new_game);
-        newGameButton.setOnClickListener(new View.OnClickListener() {
+        btnNewGame = (Button)v.findViewById(R.id.btn_new_game);
+        btnNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), FriendPickerActivity.class);
                 startActivityForResult(i, FRIEND_PICKER_CODE);
             }
         });
-        newGameButton.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/Raleway-Regular.ttf"));
+        btnNewGame.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/Raleway-Regular.ttf"));
 
         progressDialog = new ProgressDialog(getActivity());
         gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();

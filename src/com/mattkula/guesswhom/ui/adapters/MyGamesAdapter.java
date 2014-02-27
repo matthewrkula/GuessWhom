@@ -46,14 +46,8 @@ public class MyGamesAdapter extends BaseAdapter {
     }
 
     @Override
-    public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();
-
-    }
-
-    @Override
-    public View getView(int i, View convertview, ViewGroup viewGroup) {
-        View v = convertview;
+    public View getView(int i, View convertView, ViewGroup viewGroup) {
+        View v = convertView;
         Game game = games[i];
         if(v == null)
             v = View.inflate(c, R.layout.listitem_games, null);

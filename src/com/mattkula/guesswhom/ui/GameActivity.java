@@ -37,22 +37,22 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
 
     public static final String EXTRA_GAME = "game";
 
-    SimpleFacebook simpleFacebook;
     GameBoardFragment fragment;
+    SimpleFacebook simpleFacebook;
 
     Game game;
 
-    Button askButton;
-    TextView hideText;
-    TextView replyText;
-    TextView questionText;
-    CustomTextView replyWho;
-    CustomTextView questionWho;
+    Button btnAsk;
+    TextView textHide;
+    TextView textReply;
+    TextView textQuestion;
+    CustomTextView textReplyWho;
+    CustomTextView testQuestionWho;
     ProgressDialog progressDialog;
 
+    String otherName;
     String myAnswerId;
     String otherAnswerId;
-    String otherName;
 
     boolean myTurn = false;
 
@@ -105,17 +105,17 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
             if(game.answers[i].fb_id.equals(myAnswerId))
                 ((TextView)findViewById(R.id.text_my_answer_name)).setText(game.answers[i].name);
 
-        askButton = (Button)findViewById(R.id.btn_ask);
-        replyText = (TextView)findViewById(R.id.text_reply);
-        replyWho = (CustomTextView)findViewById(R.id.text_reply_who);
-        questionText = (TextView)findViewById(R.id.text_question_text);
-        questionWho = (CustomTextView)findViewById(R.id.text_question_who);
-        hideText = (TextView)findViewById(R.id.hide_view);
+        btnAsk = (Button)findViewById(R.id.btn_ask);
+        textHide = (TextView)findViewById(R.id.hide_view);
+        textReply = (TextView)findViewById(R.id.text_reply);
+        textReplyWho = (CustomTextView)findViewById(R.id.text_reply_who);
+        textQuestion = (TextView)findViewById(R.id.text_question_text);
+        testQuestionWho = (CustomTextView)findViewById(R.id.text_question_who);
 
-        replyWho.setBold(true);
-        questionWho.setBold(true);
+        textReplyWho.setBold(true);
+        testQuestionWho.setBold(true);
 
-        hideText.setOnTouchListener(new View.OnTouchListener() {
+        textHide.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch(motionEvent.getAction()){
@@ -131,23 +131,23 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
             }
         });
 
-        ViewGroup parent = (ViewGroup)askButton.getParent();
+        ViewGroup parent = (ViewGroup)btnAsk.getParent();
         if(game.turn_count == 0){
             for(int i=0; i < parent.getChildCount(); i++){
                 parent.getChildAt(i).setVisibility(View.GONE);
             }
-            askButton.setVisibility(View.VISIBLE);
-            askButton.setText("ASK");
+            btnAsk.setVisibility(View.VISIBLE);
+            btnAsk.setText("ASK");
         }else if(game.turn_count == 1){
             for(int i=0; i < parent.getChildCount(); i++){
-                if(parent.getChildAt(i) == questionText){
+                if(parent.getChildAt(i) == textQuestion){
                     parent.getChildAt(i-1).setVisibility(View.VISIBLE);
                 }
                 parent.getChildAt(i).setVisibility(View.GONE);
             }
-            askButton.setVisibility(View.VISIBLE);
-            questionText.setVisibility(View.VISIBLE);
-            questionWho.setVisibility(View.VISIBLE);
+            btnAsk.setVisibility(View.VISIBLE);
+            textQuestion.setVisibility(View.VISIBLE);
+            testQuestionWho.setVisibility(View.VISIBLE);
         }
 
         if(myId.equals(game.whose_turn))
@@ -159,25 +159,25 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
 
     private void itIsTheirTurn(){
         myTurn = false;
-        questionWho.setText("You asked: ");
-        questionText.setText(String.format("\"%s\"", game.question));
-        askButton.setVisibility(View.INVISIBLE);
-        replyWho.setText("You answered: ");
-        replyText.setText(String.format("\"%s\" to \"%s\"", game.response, game.lastquestion));
+        testQuestionWho.setText("You asked: ");
+        textQuestion.setText(String.format("\"%s\"", game.question));
+        textReplyWho.setText("You answered: ");
+        textReply.setText(String.format("\"%s\" to \"%s\"", game.response, game.lastquestion));
+        btnAsk.setVisibility(View.INVISIBLE);
     }
 
     private void itIsMyTurn(){
         myTurn = true;
-        questionWho.setText(otherName + " asked: ");
-        questionText.setText(String.format("\"%s\"", game.question));
-        askButton.setOnClickListener(new View.OnClickListener() {
+        testQuestionWho.setText(otherName + " asked: ");
+        textQuestion.setText(String.format("\"%s\"", game.question));
+        textReplyWho.setText(otherName + " answered: ");
+        textReply.setText(String.format("\"%s\" to \"%s\"", game.response, game.lastquestion));
+        btnAsk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 askQuestion();
             }
         });
-        replyWho.setText(otherName + " answered: ");
-        replyText.setText(String.format("\"%s\" to \"%s\"", game.response, game.lastquestion));
     }
 
     private void askQuestion(){

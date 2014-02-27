@@ -47,6 +47,7 @@ public class AuthorizedMainFragment extends Fragment {
     ProfilePictureView profilePictureView;
 
     Gson gson;
+    MyGamesAdapter adapter;
     SimpleFacebook simpleFacebook;
 
     String mId;
@@ -54,7 +55,6 @@ public class AuthorizedMainFragment extends Fragment {
     String mFirstName;
     boolean gamesLoaded = false;
 
-    MyGamesAdapter adapter;
 
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
@@ -76,11 +76,11 @@ public class AuthorizedMainFragment extends Fragment {
         setHasOptionsMenu(true);
         View v =  inflater.inflate(R.layout.fragment_main_authorized, null);
 
-        textGamesInProgress = (TextView)v.findViewById(R.id.text_games_in_progress);
-        profilePictureView = (ProfilePictureView)v.findViewById(R.id.facebook_profile_picture);
         listMyGames = (ListView)v.findViewById(R.id.list_my_games);
         listMyGames.setOnItemClickListener(listener);
         listMyGames.setOnItemLongClickListener(listenerLong);
+        profilePictureView = (ProfilePictureView)v.findViewById(R.id.facebook_profile_picture);
+        textGamesInProgress = (TextView)v.findViewById(R.id.text_games_in_progress);
 
         btnNewGame = (Button)v.findViewById(R.id.btn_new_game);
         btnNewGame.setOnClickListener(new View.OnClickListener() {
@@ -181,8 +181,6 @@ public class AuthorizedMainFragment extends Fragment {
                 Constants.BASE_URL,
                 opponentId,
                 simpleFacebook.getAccessToken());
-
-        Log.e("ASDF", "New game url: " + url);
 
         Request newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override

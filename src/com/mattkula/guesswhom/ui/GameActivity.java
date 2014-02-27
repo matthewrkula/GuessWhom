@@ -163,7 +163,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         textQuestion.setText(String.format("\"%s\"", game.question));
         textReplyWho.setText("You answered: ");
         textReply.setText(String.format("\"%s\" to \"%s\"", game.response, game.lastquestion));
-        btnAsk.setVisibility(View.INVISIBLE);
+        btnAsk.setVisibility(View.GONE);
     }
 
     private void itIsMyTurn(){

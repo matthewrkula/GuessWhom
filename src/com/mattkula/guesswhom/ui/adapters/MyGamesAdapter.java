@@ -46,6 +46,12 @@ public class MyGamesAdapter extends BaseAdapter {
     }
 
     @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+
+    }
+
+    @Override
     public View getView(int i, View convertview, ViewGroup viewGroup) {
         View v = convertview;
         Game game = games[i];

@@ -27,8 +27,10 @@ import com.mattkula.guesswhom.ui.GameActivity;
 import com.mattkula.guesswhom.ui.adapters.MyGamesAdapter;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.entities.Profile;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -52,6 +54,7 @@ public class AuthorizedMainFragment extends Fragment {
     String mFirstName;
     boolean gamesLoaded = false;
 
+    MyGamesAdapter adapter;
 
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
@@ -250,7 +253,8 @@ public class AuthorizedMainFragment extends Fragment {
                     Arrays.sort(game.answers);
                 }
                 updateProgressDialog(false, null);
-                listMyGames.setAdapter(new MyGamesAdapter(getActivity(), games));
+                adapter = new MyGamesAdapter(getActivity(), games);
+                listMyGames.setAdapter(adapter);
                 gamesLoaded = true;
             }
         }, new Response.ErrorListener() {
@@ -263,7 +267,7 @@ public class AuthorizedMainFragment extends Fragment {
         ApplicationController.getInstance().getRequestQueue().add(request);
     }
 
-    private void deleteGame(Game game){
+    private void deleteGame(final Game game){
 
         AlertDialog d = new AlertDialog.Builder(getActivity())
                 .setTitle("Delete game?")
@@ -271,6 +275,7 @@ public class AuthorizedMainFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
+                        sendDeleteRequest(game);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -282,6 +287,44 @@ public class AuthorizedMainFragment extends Fragment {
                 .create();
 
         d.show();
+    }
+
+    private void sendDeleteRequest(final Game game){
+        String url = Constants.BASE_URL + "/delete/" + game.id + ".json";
+
+        Request newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+
+                    String deletedId = response.getString("deleted");
+                    ArrayList<Game> gameArrayList = new ArrayList<Game>(Arrays.asList(games));
+                    ArrayList<Game> toRemove = new ArrayList<Game>();
+                    for(Game g : gameArrayList){
+                       if(g.id.equals(deletedId)){
+                           toRemove.add(g);
+                       }
+                    }
+                    gameArrayList.removeAll(toRemove);
+                    games = gameArrayList.toArray(new Game[0]);
+                    adapter = new MyGamesAdapter(getActivity(), games);
+                    listMyGames.setAdapter(adapter);
+
+                } catch (JSONException e){
+                    Log.e("ASDF", "JsonException");
+                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("ASDF", volleyError.toString());
+                Toast.makeText(getActivity(), "Error deleting game", Toast.LENGTH_LONG).show();
+                updateProgressDialog(false, null);
+            }
+        });
+
+        ApplicationController.getInstance().getRequestQueue().add(newGameRequest);
     }
 
     // true = show, false hide, title can be null

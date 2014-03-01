@@ -1,8 +1,6 @@
 <component name="libraryTable">
   <library name="android-support-v41">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/libs/android-support-v4.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>

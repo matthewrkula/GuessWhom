@@ -6,6 +6,17 @@
     <uses-sdk android:minSdkVersion="14"
             android:targetSdkVersion="14"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <permission
+            android:name="com.mattkula.gcm.permission.C2D_MESSAGE"
+            android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.mattkula.gcm.permission.C2D_MESSAGE" />
+
     <application android:label="@string/app_name"
                  android:icon="@drawable/icon"
                  android:theme="@style/CustomActionBarTheme"
@@ -28,6 +39,15 @@
         <activity android:name=".ui.ConfirmGuessActivity"
                 android:screenOrientation="portrait"
                 android:theme="@style/Transparent"/>
+        <receiver
+                android:name="com.mattkula.guesswhom.networking.GcmBroadcastReceiver"
+                android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.mattkula.gcm" />
+            </intent-filter>
+        </receiver>
+
         <meta-data android:name="com.crashlytics.ApiKey" android:value="8cb1d809fc2ca24e84d5f3d9441314dffc4f0670"/>
     </application>
 </manifest>

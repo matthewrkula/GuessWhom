@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/GuessWhom.iml" filepath="$PROJECT_DIR$/GuessWhom.iml" />
       <module fileurl="file://$USER_HOME$/android/github libraries/android-simple-facebook/Simple Facebook/Simple Facebook.iml" filepath="$USER_HOME$/android/github libraries/android-simple-facebook/Simple Facebook/Simple Facebook.iml" />
       <module fileurl="file://$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/facebook.iml" filepath="$USER_HOME$/android/facebook-android-sdk-3.6.0/facebook/facebook.iml" />
+      <module fileurl="file://$USER_HOME$/android/android-sdk-linux/extras/google/google_play_services/libproject/google-play-services_lib/google-play-services_lib.iml" filepath="$USER_HOME$/android/android-sdk-linux/extras/google/google_play_services/libproject/google-play-services_lib/google-play-services_lib.iml" />
     </modules>
   </component>
 </project>

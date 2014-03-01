@@ -227,7 +227,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
         if(isCompleted)
             url += "&is_completed=true";
 
-        Log.e("ASDF", url);
+        Log.e("URL", url);
         JsonObjectRequest newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

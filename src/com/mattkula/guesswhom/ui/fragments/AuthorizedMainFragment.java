@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.facebook.widget.ProfilePictureView;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mattkula.guesswhom.ApplicationController;
@@ -30,6 +32,7 @@ import com.sromku.simple.fb.entities.Profile;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -49,6 +52,11 @@ public class AuthorizedMainFragment extends Fragment {
     Gson gson;
     MyGamesAdapter adapter;
     SimpleFacebook simpleFacebook;
+
+    boolean gcmLoaded = false;
+    String gcm_id;
+    String SENDER_ID = "391893791069";
+    GoogleCloudMessaging gcm;
 
     String mId;
     Game[] games;
@@ -94,6 +102,7 @@ public class AuthorizedMainFragment extends Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
         gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+
         return v;
     }
 
@@ -105,6 +114,11 @@ public class AuthorizedMainFragment extends Fragment {
         if(PreferenceManager.getProfileId(getActivity()).equals("-1"))
             makeMeRequest();
         else {
+            gcm = GoogleCloudMessaging.getInstance(getActivity());
+            if(!gcmLoaded){
+                new GCMRegistrationTask().execute();
+            }
+
             mFirstName = PreferenceManager.getFirstName(getActivity());
             mId = PreferenceManager.getProfileId(getActivity());
             getMyGames();
@@ -237,7 +251,6 @@ public class AuthorizedMainFragment extends Fragment {
     public void getMyGames(){
         String url = String.format("%s%s?user_id=%s", Constants.BASE_URL, "games.json", mId);
         updateProgressDialog(true, "Getting games");
-        Log.e("ASDF", url);
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
@@ -336,5 +349,47 @@ public class AuthorizedMainFragment extends Fragment {
            else
                progressDialog.dismiss();
        }
+    }
+
+    private class GCMRegistrationTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                if (gcm == null) {
+                    gcm = GoogleCloudMessaging.getInstance(getActivity());
+                }
+                gcm_id = gcm.register(SENDER_ID);
+                Log.d("GCM", "Device registered, registration ID=" + gcm_id);
+                sendRegistrationIdToBackend(gcm_id);
+            } catch(IOException e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        private void sendRegistrationIdToBackend(String regId){
+            String url = String.format("%splayer/update.json?fb_id=%s&gcm_id=%s",
+                    Constants.BASE_URL, PreferenceManager.getProfileId(getActivity()), regId);
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject jsonObject) {
+                    gcmLoaded = true;
+                    try {
+                        if(jsonObject.getString("status").equals("200")){
+                            Log.e("GCM", "Registered");
+                        }
+                    } catch (Exception e){
+                        Log.e("GCM", "Error registering");
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+
+                }
+            });
+
+            ApplicationController.getInstance().getRequestQueue().add(request);
+        }
     }
 }

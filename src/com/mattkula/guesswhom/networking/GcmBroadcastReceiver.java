@@ -52,6 +52,6 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
         manager.notify(0, mBuilder.build());
 
         Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(500);
+        v.vibrate(1000);
     }
 }

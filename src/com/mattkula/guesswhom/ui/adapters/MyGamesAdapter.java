@@ -13,8 +13,10 @@ import com.mattkula.guesswhom.data.models.Game;
 import com.mattkula.guesswhom.ui.CustomTextView;
 import org.ocpsoft.prettytime.PrettyTime;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by matt on 2/9/14.
@@ -23,7 +25,7 @@ public class MyGamesAdapter extends BaseAdapter {
 
     Game[] games;
     Context c;
-    PrettyTime prettyTime = new PrettyTime(new Date(System.currentTimeMillis() + 1000*60*60*6), Locale.US);
+    PrettyTime prettyTime = new PrettyTime(new Date(System.currentTimeMillis() - TimeZone.getDefault().getOffset(Calendar.ZONE_OFFSET)), Locale.US);
 
     public MyGamesAdapter(Context c, Game[] games) {
         this.c = c;

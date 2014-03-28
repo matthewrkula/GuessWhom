@@ -33,7 +33,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.icon)
-                        .setContentTitle(asker + " asked:")
+                        .setContentTitle(asker + " asked")
                         .setContentText(question)
                         .setAutoCancel(true);
 

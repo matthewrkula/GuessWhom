@@ -2,7 +2,6 @@ package com.mattkula.guesswhom.ui;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +12,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.ApplicationController;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.Constants;
@@ -228,7 +228,7 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
             url += "&is_completed=true";
 
         Log.e("URL", url);
-        JsonObjectRequest newGameRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
+        Request updateRequest = new JsonObjectRequest(JsonObjectRequest.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (progressDialog != null && progressDialog.isShowing())
@@ -246,9 +246,9 @@ public class GameActivity extends FragmentActivity implements GameBoardFragment.
                 Log.e("ASDF", volleyError.toString());
                 volleyError.printStackTrace();
             }
-        });
+        }).setRetryPolicy(new DefaultRetryPolicy(10000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        ApplicationController.getInstance().getRequestQueue().add(newGameRequest);
+        ApplicationController.getInstance().getRequestQueue().add(updateRequest);
     }
 
     @Override

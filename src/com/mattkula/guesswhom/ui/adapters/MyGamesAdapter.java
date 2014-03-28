@@ -5,12 +5,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.facebook.widget.ProfilePictureView;
 import com.mattkula.guesswhom.R;
 import com.mattkula.guesswhom.data.PreferenceManager;
 import com.mattkula.guesswhom.data.models.Game;
 import com.mattkula.guesswhom.ui.CustomTextView;
+import com.squareup.picasso.Picasso;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import java.util.Calendar;
@@ -30,6 +32,8 @@ public class MyGamesAdapter extends BaseAdapter {
     public MyGamesAdapter(Context c, Game[] games) {
         this.c = c;
         this.games = games;
+        Log.e("ASDF", prettyTime.format(new Date(System.currentTimeMillis())));
+        Log.e("ASDF", TimeZone.getDefault().getDisplayName());
     }
 
     @Override
@@ -59,21 +63,27 @@ public class MyGamesAdapter extends BaseAdapter {
 
         String s = "";
 
+        String myId = PreferenceManager.getProfileId(c);
+
         if(!game.winner.equals("0"))
-            s = PreferenceManager.getProfileId(c).equals(game.winner) ? "You won!" : game.opponent_name + " won!";
-        else if(PreferenceManager.getProfileId(c).equals(game.whose_turn))
+            s = (myId.equals(game.winner) ? "You won!" : (myId.equals(game.opponent_id) ? game.creator_name + " won!" : game.opponent_name + " won!"));
+        else if(myId.equals(game.whose_turn))
             s = "Your turn.";
         else
-            s = PreferenceManager.getProfileId(c).equals(game.opponent_id) ? game.creator_name + "'s turn" : game.opponent_name + "'s turn.";
-
+            s = myId.equals(game.opponent_id) ? game.creator_name + "'s turn" : game.opponent_name + "'s turn.";
 
         textWhoseTurn.setText(s);
         textWhoseTurn.setBold(true);
         textTime.setText(prettyTime.format(game.updated_at));
-        ProfilePictureView picture = (ProfilePictureView)v.findViewById(R.id.game_profile_picture);
+        ImageView picture = (ImageView)v.findViewById(R.id.game_profile_picture);
 
-
-        picture.setProfileId(game.opponent_id.equals(PreferenceManager.getProfileId(c)) ? game.creator_id : game.opponent_id);
+        Picasso.with(c)
+                .load(String.format("https://graph.facebook.com/%s/picture?width=%d&height=%d",
+                        game.opponent_id.equals(PreferenceManager.getProfileId(c)) ? game.creator_id : game.opponent_id,
+                        60,
+                        60))
+                .placeholder(R.drawable.default_user)
+                .into(picture);
 
         if(i % 2 == 0)
             v.setBackgroundColor(0x33ffffff);
